@@ -8,6 +8,13 @@ We built **[Murf Falcon](https://murf.ai/falcon)**, the consistently fastest TTS
 
 **Build one voice agent over ten days**, from August 6th to August 15th, ending on Independence Day. The agent gets a new capability every day, until it can answer a real phone call and solve a real problem for someone in India.
 
+## Progress
+
+| Day | Feature | Tag |
+|-----|---------|-----|
+| 1 | Voice agent setup + Indian voice | v0.1.0-day1 |
+
+
 ### How It Works
 
 - **One task each day**, published here and announced to all participants
