@@ -1,0 +1,1992 @@
+    11:52:11.419 DEBUG… asyncio            Using selector: EpollSelector  
+    11:52:11.423 DEV  … livekit.agents     Watching /home/student/murf-livekit-starter/backend/src  
+    11:52:15.776 DEBUG… asyncio            Using selector: EpollSelector  
+    11:52:15.785 INFO … livekit.agents     starting worker {"version": "1.4.5", "rtc-version": "1.1.2"}
+    11:52:15.786 INFO … livekit.agents     preloading plugins  
+                                         {"packages": ["livekit.plugins.murf", "livekit.plugins.silero", "livekit.plugins.google", 
+"livekit.plugins.deepgram", "livekit.plugins.turn_detector", "av"]}
+    11:52:15.790 INFO … livekit.agents     starting inference executor  
+    11:52:20.117 INFO … livekit.agents     initializing process {"pid": 18726, "inference": true}
+    11:52:24.989 INFO … livekit.agents     process initialized {"pid": 18726, "inference": true, "elapsed_time": 4.87}
+    11:52:24.993 INFO … livekit.agents     HTTP server listening on :45355  
+    11:52:25.654 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_vjYXYdzj8aLW", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
+    11:55:40.684 INFO … livekit.agents     shutting down worker {"id": "AW_vjYXYdzj8aLW"}
+    11:55:40.689 INFO … livekit.agents     process exiting {"reason": "", "pid": 18726, "inference": true}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=20, pipe_handle=27)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/__init__.py", line 16, in <module>
+    from . import context
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/context.py", line 3, in <module>
+    import threading
+  File "/home/student/anaconda3/lib/python3.13/threading.py", line 6, in <module>
+    import warnings
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1119, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1219, in get_data
+KeyboardInterrupt
+    11:55:51.386 DEBUG… asyncio            Using selector: EpollSelector  
+    11:55:51.398 INFO … livekit.agents     starting worker {"version": "1.4.5", "rtc-version": "1.1.2"}
+    11:55:51.402 INFO … livekit.agents     preloading plugins  
+                                         {"packages": ["livekit.plugins.murf", "livekit.plugins.silero", "livekit.plugins.google", 
+"livekit.plugins.deepgram", "livekit.plugins.turn_detector", "av"]}
+    11:55:51.407 INFO … livekit.agents     starting inference executor  
+    11:55:58.393 INFO … livekit.agents     initializing process {"pid": 18949, "inference": true}
+    11:56:05.300 INFO … livekit.agents     process initialized {"pid": 18949, "inference": true, "elapsed_time": 6.9}
+    11:56:05.307 INFO … livekit.agents     HTTP server listening on :39043  
+    11:56:05.755 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_UXxoE2XETv8n", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
+    11:56:38.579 INFO … livekit.agents     received job request  
+                                         {"job_id": "AJ_gsXfkZZa89VE", "dispatch_id": "AD_ZL8LYwJUbyZV", "room": "voice_assistant_room_2623", 
+"room_id": "RM_8xC362MkrTdb", "agent_name": "my-agent", "resuming": false, "enable_recording": false}
+    11:56:38.646 DEBUG… livekit.agents     received assignment  
+                                         {"agent_name": "my-agent", "room_id": "RM_8xC362MkrTdb", "room": "voice_assistant_room_2623", "job_id":
+"AJ_gsXfkZZa89VE", "dispatch_id": "AD_ZL8LYwJUbyZV", "enable_recording": false}
+    11:56:38.649 WARNI… livekit.agents     no warmed process available for job, waiting for one to be created {"job_id": "AJ_gsXfkZZa89VE"}
+    11:56:38.660 INFO … livekit.agents     initializing process {"pid": 19085}
+    11:56:39.110 INFO … livekit.agents     process initialized {"pid": 19085, "elapsed_time": 0.45}
+                 DEBUG… asyncio            Using selector:             {"pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+                                           EpollSelector                                                                                        
+    11:56:39.393 DEBUG… livekit.agents     input stream attached  
+                                         {"participant": null, "source": "SOURCE_UNKNOWN", "accepted_sources": ["SOURCE_MICROPHONE"], "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:39.444 DEBUG… livekit.agents     http_session(): creating a new httpclient ctx  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+VAAPI is supported.
+    11:56:40.823 DEBUG… livekit.….deepgram Established new Deepgram STT WebSocket connection:  
+                                           {"headers": {"dg-project-id": "6c2f2046-4221-4781-9c5c-ee70242b4080", "dg-request-id": 
+"019fdae7-03a5-7c51-b422-15090fd720fd", "Date": "Fri, 07 Aug 2026 06:26:40 GMT"}, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": 
+"AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:42.652 DEBUG… livekit.agents     using audio io: `RoomIO` -> `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+                 DEBUG… livekit.agents     using transcript io: `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+                 DEBUG… livekit.agents     start reading stream  
+                                         {"participant": "voice_assistant_user_4096", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:43.497 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Five", "language": "en-US", "transcript_delay": 0.31389498710632324, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:43.526 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:43.718 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.04073319211602211, "duration": 0.203, "input": "<|im_start|>user\nfive", 
+"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:43.720 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 0.21472954750061035, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:43.839 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Hello.", "language": "en-US", "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:44.005 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.35944893956184387, "duration": 0.154, "input": "<|im_start|>user\nfive hello", 
+"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:44.345 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:45.313 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Hello!", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", "pid": 19085, "job_id":
+"AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:56:45.314 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=2732cc783350, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:45.558 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 243.94 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:45.745 DEBUG… livekit.agents     aec warmup active, disabling interruptions for 3.00s  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:46.220 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "I'm VyapaarMitra. I help customers discover products from local businesses and artisans. How 
+can I help you today?", "remaining_audio": 0.3987243175506592, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", 
+"room_id": "RM_8xC362MkrTdb"}
+    11:56:46.479 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:47.597 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:56:48.745 DEBUG… livekit.agents     aec warmup expired, re-enabling interruptions  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:01.914 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Friend handmade gift", "language": "en-US", "transcript_delay": 
+0.008965015411376953, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:01.921 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:02.940 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Handmade gifts are a wonderful choice for a friend.", "remaining_audio": 0.0, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:02.941 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=d370533a69ff, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:03.084 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 142.58 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:03.901 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have lovely options like hand-painted home decor, artisan jewelry, and customized crafts. 
+Would you like to explore one of these categories?", "remaining_audio": 0.9982585906982422, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:05.814 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "catalog", "language": "en-US", "transcript_delay": 0.6083319187164307, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:05.825 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:07.050 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have some wonderful handmade gifts made by local artisans, like embroidered items, wooden 
+crafts, and custom art pieces.", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", 
+"room_id": "RM_8xC362MkrTdb"}
+    11:57:07.054 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=927714755e6c, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:07.193 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 138.76 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:07.554 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.04200665280222893, "duration": 0.932, "input": "<|im_start|>user\nfive 
+hello<|im_end|>\n<|im_start|>assistant\nhello i'm vyapaarmitra i help customers discover products from local businesses and artisans how can i 
+help you today<|im_end|>\n<|im_start|>user\nfriend handmade gift catalog", "room": "voice_assistant_room_2623", "pid": 19085, "job_id": 
+"AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:07.555 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 1.74057936668396, "room": "voice_assistant_room_2623", "pid": 19085, "job_id":
+"AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:08.792 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "To see the full catalog and check what is currently available, please chat directly with the 
+seller.", "remaining_audio": 1.7828788757324219, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:26.410 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "The talogulomarietal", "language": "en-US", "transcript_delay": 
+0.4019780158996582, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:26.420 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:27.383 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "I didn't quite catch that.", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", 
+"pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:27.384 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=8dcf26d508ac, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:27.517 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 133.02 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:28.906 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Could you please tell me what kind of handmade gift you are looking for, so I can help you 
+find it?", "remaining_audio": 0.7939774990081787, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:57:29.340 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.09066545963287354, "duration": 2.777, "input": "<|im_start|>user\nfive 
+hello<|im_end|>\n<|im_start|>assistant\nhello i'm vyapaarmitra i help customers discover products from local businesses and artisans how can i 
+help you today<|im_end|>\n<|im_start|>user\nfriend handmade gift catalog<|im_end|>\n<|im_start|>assistant\nwe have some wonderful handmade gifts
+made by local artisans like embroidered items wooden crafts and custom art pieces to see the full catalog and check what is currently available 
+please chat directly with the seller<|im_end|>\n<|im_start|>user\nthe talogulomarietal", "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:29.341 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 2.9303481578826904, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:57:29.459 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:37.620 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "I need handmade bags.", "language": "en-US", "transcript_delay": 
+0.5169463157653809, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:58:37.627 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:39.076 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have some lovely handmade bags crafted by local artisans, including cotton totes and 
+embroidered cloth bags.", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:39.077 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=6292648f83ef, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:39.232 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 155.00 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:39.988 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "To check if your favorite design is in stock, please chat with the seller for confirmation.",
+"remaining_audio": 0.5984952449798584, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:40.416 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.43897712230682373, "duration": 2.759, "input": "<|im_start|>assistant\nhello 
+i'm vyapaarmitra i help customers discover products from local businesses and artisans how can i help you 
+today<|im_end|>\n<|im_start|>user\nfriend handmade gift catalog<|im_end|>\n<|im_start|>assistant\nwe have some wonderful handmade gifts made by 
+local artisans like embroidered items wooden crafts and custom art pieces to see the full catalog and check what is currently available please 
+chat directly with the seller<|im_end|>\n<|im_start|>user\nthe talogulomarietal<|im_end|>\n<|im_start|>assistant\ni didn't quite catch that 
+could you please tell me what kind of handmade gift you are looking for so i can help you find it<|im_end|>\n<|im_start|>user\ni need handmade 
+bags", "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:58:40.417 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 2.7968153953552246, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:58:40.860 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:42.193 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:58:43.134 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:59:00.194 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "NACU handmade bags", "language": "en-US", "transcript_delay": 0.13598299026489258,
+"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:59:00.204 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:59:00.545 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Kawali", "language": "en-US", "transcript_delay": 0.4869730472564697, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:59:00.554 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:59:01.895 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have some lovely handmade bags here, but I am not sure about NACU brand bags or Kawali 
+designs.", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+                 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=657497a24e35, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:59:02.074 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 178.29 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    11:59:03.409 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.10890068858861923, "duration": 2.803, "input": "<|im_start|>assistant\nwe have 
+some wonderful handmade gifts made by local artisans like embroidered items wooden crafts and custom art pieces to see the full catalog and 
+check what is currently available please chat directly with the seller<|im_end|>\n<|im_start|>user\nthe 
+talogulomarietal<|im_end|>\n<|im_start|>assistant\ni didn't quite catch that could you please tell me what kind of handmade gift you are looking
+for so i can help you find it<|im_end|>\n<|im_start|>user\ni need handmade bags<|im_end|>\n<|im_start|>assistant\nwe have some lovely handmade 
+bags crafted by local artisans including cotton totes and embroidered cloth bags to check if your favorite design is in stock please chat with 
+the seller for confirmation<|im_end|>\n<|im_start|>user\nnacu handmade bags kawali", "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:59:03.410 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 2.862616539001465, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    11:59:04.210 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "To check if the seller has those exact items, please contact the seller directly for 
+confirmation.", "remaining_audio": 4.99948263168335, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:03.353 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "handmade bags", "language": "en-US", "transcript_delay": 0.3997066020965576, 
+"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:03.366 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:06.512 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:06:06.531 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.1764121055603027, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:13.923 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Hello?", "language": "en-US", "transcript_delay": 0.563788890838623, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:16.925 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:06:16.950 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:18.228 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Are you still there?", "remaining_audio": 0.0, "room": "voice_assistant_room_2623", "pid": 
+19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:18.231 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=3623894b714b, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:18.392 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 160.90 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:18.932 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:19.781 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:20.042 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "I'm happy to help whenever you're ready.", "remaining_audio": 0.27467894554138184, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:56.199 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Did you understand?", "language": "en-US", "transcript_delay": 0.4453315734863281,
+"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:56.207 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:57.285 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Yes, I understand you are looking for handmade bags.", "remaining_audio": 0.0, "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:57.287 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=c49bdccdf5cb, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:57.436 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 148.65 ms  
+                                           {"room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": 
+"RM_8xC362MkrTdb"}
+    12:06:58.705 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have some lovely cotton totes and embroidered cloth bags made by local artisans, but I 
+can't confirm if specific brands or designs are available. Please talk directly to the seller for confirmation on stock.", "remaining_audio": 
+1.3970227241516113, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:58.936 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.013315740041434765, "duration": 2.619, "input": "<|im_start|>user\nnacu 
+handmade bags kawali<|im_end|>\n<|im_start|>assistant\nwe have some lovely handmade bags here but i am not sure about nacu brand bags or kawali 
+designs to check if the seller has those exact items please contact the seller directly for confirmation<|im_end|>\n<|im_start|>user\nhandmade 
+bags hello<|im_end|>\n<|im_start|>assistant\nare you still there i'm happy to help whenever you're ready<|im_end|>\n<|im_start|>user\ndid you 
+understand", "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:06:58.938 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 2.7384393215179443, "room": "voice_assistant_room_2623", "pid": 19085, 
+"job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:12.255 INFO … livekit.agents     closing agent session due to participant disconnect (disable via                                     
+                                           `RoomInputOptions.close_on_disconnect=False`)                                                        
+                                         {"room": "voice_assistant_room_2623", "participant": "voice_assistant_user_4096", "reason": 
+"CLIENT_INITIATED", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+                 DEBUG… livekit.agents     stream closed  
+                                         {"participant": "voice_assistant_user_4096", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:12.287 DEBUG… livekit.agents     input stream detached  
+                                         {"participant": "voice_assistant_user_4096", "source": "SOURCE_UNKNOWN", "accepted_sources": 
+["SOURCE_MICROPHONE"], "room": "voice_assistant_room_2623", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:14.292 DEBUG… livekit.agents     session closed  
+                                         {"reason": "participant_disconnected", "error": null, "room": "voice_assistant_room_2623", "pid": 
+19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:32.728 INFO … livekit.agents     process exiting  
+                                         {"reason": "", "pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:32.726 DEBUG… livekit.agents     shutting down job task  
+                                         {"reason": "", "user_initiated": false, "room": "voice_assistant_room_2623", "pid": 19085, "job_id": 
+"AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:07:32.738 DEBUG… livekit.agents     http_session(): closing the httpclient ctx  
+                                         {"pid": 19085, "job_id": "AJ_gsXfkZZa89VE", "room_id": "RM_8xC362MkrTdb"}
+    12:12:45.039 INFO … livekit.agents     shutting down worker {"id": "AW_UXxoE2XETv8n"}
+    12:12:45.044 INFO … livekit.agents     process exiting {"reason": "", "pid": 18949, "inference": true}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=20, pipe_handle=26)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/__init__.py", line 16, in <module>
+    from . import context
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/context.py", line 6, in <module>
+    from . import reduction
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/reduction.py", line 15, in <module>
+    import pickle
+  File "/home/student/anaconda3/lib/python3.13/pickle.py", line 34, in <module>
+    import re
+  File "/home/student/anaconda3/lib/python3.13/re/__init__.py", line 143, in <module>
+    @enum._simple_enum(enum.IntFlag, boundary=enum.KEEP)
+     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/enum.py", line 1834, in convert_class
+    contained = value2member_map.get(member._value_)
+KeyboardInterrupt
+    12:12:56.480 DEBUG… asyncio            Using selector: EpollSelector  
+    12:12:56.494 INFO … livekit.agents     starting worker {"version": "1.4.5", "rtc-version": "1.1.2"}
+    12:12:56.497 INFO … livekit.agents     preloading plugins  
+                                         {"packages": ["livekit.plugins.murf", "livekit.plugins.silero", "livekit.plugins.google", 
+"livekit.plugins.deepgram", "livekit.plugins.turn_detector", "av"]}
+    12:12:56.504 INFO … livekit.agents     starting inference executor  
+    12:13:04.871 INFO … livekit.agents     initializing process {"pid": 19692, "inference": true}
+    12:13:14.059 INFO … livekit.agents     process initialized {"pid": 19692, "inference": true, "elapsed_time": 9.18}
+    12:13:14.065 INFO … livekit.agents     HTTP server listening on :34477  
+    12:13:14.453 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_zuwNjtipSFJG", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
+    12:14:54.649 INFO … livekit.agents     received job request  
+                                         {"job_id": "AJ_MXmt6VdxCtYV", "dispatch_id": "AD_C2RNUvJyL9Ma", "room": "voice_assistant_room_3074", 
+"room_id": "RM_NBEEn8Zxq24U", "agent_name": "my-agent", "resuming": false, "enable_recording": false}
+    12:14:54.701 DEBUG… livekit.agents     received assignment  
+                                         {"agent_name": "my-agent", "room_id": "RM_NBEEn8Zxq24U", "room": "voice_assistant_room_3074", "job_id":
+"AJ_MXmt6VdxCtYV", "dispatch_id": "AD_C2RNUvJyL9Ma", "enable_recording": false}
+    12:14:54.705 WARNI… livekit.agents     no warmed process available for job, waiting for one to be created {"job_id": "AJ_MXmt6VdxCtYV"}
+    12:14:54.718 INFO … livekit.agents     initializing process {"pid": 19869}
+    12:14:55.165 INFO … livekit.agents     process initialized {"pid": 19869, "elapsed_time": 0.45}
+                 DEBUG… asyncio            Using selector: EpollSelector {"pid": 19869}
+    12:14:55.394 DEBUG… livekit.agents     input stream attached  
+                                         {"participant": null, "source": "SOURCE_UNKNOWN", "accepted_sources": ["SOURCE_MICROPHONE"], "room": 
+"voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:14:55.419 DEBUG… livekit.agents     http_session(): creating a new httpclient ctx  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+VAAPI is supported.
+    12:14:56.663 DEBUG… livekit.agents     using audio io: `RoomIO` -> `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+                 DEBUG… livekit.agents     using transcript io: `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:14:57.664 DEBUG… livekit.agents     start reading stream  
+                                         {"participant": "voice_assistant_user_7487", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:01.517 DEBUG… livekit.….deepgram Established new Deepgram STT WebSocket connection:  
+                                           {"headers": {"dg-project-id": "6c2f2046-4221-4781-9c5c-ee70242b4080", "dg-request-id": 
+"019fdaf7-cf41-7183-a656-ca0d9d56c411", "Date": "Fri, 07 Aug 2026 06:45:01 GMT"}, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": 
+"AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:03.346 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Namaskaram.", "language": "en-US", "transcript_delay": 5.304523229598999, "room": 
+"voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:03.375 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:03.619 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.3097887635231018, "duration": 0.266, "input": "<|im_start|>user\nnamaskaram", 
+"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:03.621 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 0.2738621234893799, "room": "voice_assistant_room_3074", "pid": 19869, 
+"job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:10.679 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "నమస్కారం!", "remaining_audio": 0.0, "room": "voice_assistant_room_3074", "pid": 19869, "job_id":
+"AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:10.680 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=f6159a00f58b, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:10.834 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 154.28 ms  
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:11.106 DEBUG… livekit.agents     aec warmup active, disabling interruptions for 3.00s  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:11.591 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "నేను VyapaarMitra. స్థానిక వ్యాపారులు మరియు కళాకారుల ఉత్పత్తులను కనుగొనడంలో నేను మీకు సహాయం చేస్తాను. ఈరోజు నేను మీకు ఎలా సహాయం
+చేయగలను?", "remaining_audio": 0.5978107452392578, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:12.009 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:14.108 DEBUG… livekit.agents     aec warmup expired, re-enabling interruptions  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:26.870 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Okay. I want to find", "language": "en-US", "transcript_delay": 
+0.39882421493530273, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:26.884 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:27.828 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "hand", "language": "en-US", "transcript_delay": 0.00811767578125, "room": 
+"voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:27.848 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:28.873 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Sure!", "remaining_audio": 0.0, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": 
+"AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:28.875 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=8ef4d7526e91, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:29.015 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 140.16 ms  
+                                           {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:29.538 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+    12:15:29.813 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "మీరు ఏ రకమైన handmade products వెతుకుతున్నారు? Handicrafts, bags, లేదా వేరే ఏదైనా కావలა?", "remaining_audio":
+0.3583195209503174, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:31.626 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": 
+"RM_NBEEn8Zxq24U"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:15:31.656 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.8267910480499268, "room": "voice_assistant_room_3074", "pid": 19869, 
+"job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:34.981 INFO … livekit.agents     closing agent session due to participant disconnect (disable via                                     
+                                           `RoomInputOptions.close_on_disconnect=False`)                                                        
+                                         {"room": "voice_assistant_room_3074", "participant": "voice_assistant_user_7487", "reason": 
+"CLIENT_INITIATED", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:34.988 DEBUG… livekit.agents     stream closed  
+                                         {"participant": "voice_assistant_user_7487", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:34.989 DEBUG… livekit.agents     input stream detached  
+                                         {"participant": "voice_assistant_user_7487", "source": "SOURCE_UNKNOWN", "accepted_sources": 
+["SOURCE_MICROPHONE"], "room": "voice_assistant_room_3074", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:36.998 DEBUG… livekit.agents     session closed  
+                                         {"reason": "participant_disconnected", "error": null, "room": "voice_assistant_room_3074", "pid": 
+19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:59.350 DEBUG… livekit.agents     shutting down job task  
+                                         {"reason": "", "user_initiated": false, "room": "voice_assistant_room_3074", "pid": 19869, "job_id": 
+"AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:59.356 INFO … livekit.agents     process exiting  
+                                         {"reason": "", "pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:15:59.354 DEBUG… livekit.agents     http_session(): closing the httpclient ctx  
+                                         {"pid": 19869, "job_id": "AJ_MXmt6VdxCtYV", "room_id": "RM_NBEEn8Zxq24U"}
+    12:22:43.304 INFO … livekit.agents     shutting down worker {"id": "AW_zuwNjtipSFJG"}
+    12:22:43.310 INFO … livekit.agents     process exiting {"reason": "", "pid": 19692, "inference": true}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=20, pipe_handle=26)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/__init__.py", line 16, in <module>
+    from . import context
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/context.py", line 5, in <module>
+    from . import process
+  File "/home/student/anaconda3/lib/python3.13/multiprocessing/process.py", line 19, in <module>
+    import signal
+  File "/home/student/anaconda3/lib/python3.13/signal.py", line 3, in <module>
+    from enum import IntEnum as _IntEnum
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1156, in get_code
+  File "<frozen importlib._bootstrap_external>", line 785, in _compile_bytecode
+KeyboardInterrupt
+    12:22:53.488 DEBUG… asyncio            Using selector: EpollSelector  
+    12:22:53.510 INFO … livekit.agents     starting worker {"version": "1.4.5", "rtc-version": "1.1.2"}
+    12:22:53.514 INFO … livekit.agents     preloading plugins  
+                                         {"packages": ["livekit.plugins.murf", "livekit.plugins.silero", "livekit.plugins.google", 
+"livekit.plugins.deepgram", "livekit.plugins.turn_detector", "av"]}
+    12:22:53.521 INFO … livekit.agents     starting inference executor  
+    12:23:01.420 INFO … livekit.agents     initializing process {"pid": 20207, "inference": true}
+    12:23:10.016 INFO … livekit.agents     process initialized {"pid": 20207, "inference": true, "elapsed_time": 8.59}
+    12:23:10.021 INFO … livekit.agents     HTTP server listening on :38663  
+    12:23:10.409 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_4kF7FFoANeYc", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
+    12:24:37.485 INFO … livekit.agents     received job request  
+                                         {"job_id": "AJ_2XrLsSYHcX5u", "dispatch_id": "AD_6r8MLwiKQDNx", "room": "voice_assistant_room_5107", 
+"room_id": "RM_SHKJxKWEB6Q8", "agent_name": "my-agent", "resuming": false, "enable_recording": false}
+    12:24:37.545 DEBUG… livekit.agents     received assignment  
+                                         {"agent_name": "my-agent", "room_id": "RM_SHKJxKWEB6Q8", "room": "voice_assistant_room_5107", "job_id":
+"AJ_2XrLsSYHcX5u", "dispatch_id": "AD_6r8MLwiKQDNx", "enable_recording": false}
+    12:24:37.547 WARNI… livekit.agents     no warmed process available for job, waiting for one to be created {"job_id": "AJ_2XrLsSYHcX5u"}
+    12:24:37.560 INFO … livekit.agents     initializing process {"pid": 20288}
+    12:24:38.007 INFO … livekit.agents     process initialized {"pid": 20288, "elapsed_time": 0.44}
+                 DEBUG… asyncio            Using selector:             {"pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+                                           EpollSelector                                                                                        
+    12:24:38.361 DEBUG… livekit.agents     input stream attached  
+                                         {"participant": null, "source": "SOURCE_UNKNOWN", "accepted_sources": ["SOURCE_MICROPHONE"], "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:24:38.389 DEBUG… livekit.agents     http_session(): creating a new httpclient ctx  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+VAAPI is supported.
+    12:24:39.434 DEBUG… livekit.….deepgram Established new Deepgram STT WebSocket connection:  
+                                           {"headers": {"dg-project-id": "6c2f2046-4221-4781-9c5c-ee70242b4080", "dg-request-id": 
+"019fdb00-a0c1-7de0-923d-4742de74ac5a", "Date": "Fri, 07 Aug 2026 06:54:39 GMT"}, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": 
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:24:43.560 WARNI… livekit            livekit_api::signal_client:287:livekit_api::signal_client - signal connection failed on v0 path:     
+                                           Timeout("signal connection timed out")                                                               
+                                  {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:24:48.364 WARNI… livekit.agents     The room connection was not established within 10 seconds after calling job_entry. This might mean   
+                                           that job_ctx.connect() was never invoked, or that no AgentSession with an active RoomIO has been     
+                                           started.                                                                                             
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:24:49.859 DEBUG… livekit.agents     using audio io: `RoomIO` -> `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+                 DEBUG… livekit.agents     using transcript io: `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:24:50.648 DEBUG… livekit.agents     start reading stream  
+                                         {"participant": "voice_assistant_user_2810", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:16.967 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Namaskaram.", "language": "en-US", "transcript_delay": 0.44655847549438477, 
+"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:16.982 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:17.324 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.3097887635231018, "duration": 0.243, "input": "<|im_start|>user\nnamaskaram", 
+"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:17.327 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 0.35903263092041016, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:18.174 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "నమస్కారం!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288, "job_id":
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:18.175 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=32b969406eb4, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:18.293 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 118.31 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:18.514 DEBUG… livekit.agents     aec warmup active, disabling interruptions for 3.00s  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:18.887 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "నేను మీకు ఎలా సహాయం చేయగలను?", "remaining_audio": 0.7995920181274414, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:21.514 DEBUG… livekit.agents     aec warmup expired, re-enabling interruptions  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:29.140 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "To buy a gift for my friend.", "language": "en-US", "transcript_delay": 
+1.220052719116211, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:29.154 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:29.929 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "That's wonderful!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 
+20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:29.931 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=72d06db18689, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:30.063 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 132.15 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:30.844 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have some great local gift options like handmade crafts, traditional items, and artisan 
+products. What kind of gift does your friend like?", "remaining_audio": 0.7992463111877441, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:31.402 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:31.457 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.29499539732933044, "duration": 2.31, "input": 
+"<|im_start|>user\nnamaskaram<|im_end|>\n<|im_start|>assistant\nనమస్కారం నేను మీకు ఎలా సహాయం చేయగలను<|im_end|>\n<|im_start|>user\nto buy a gift for my
+friend", "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:31.458 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 2.317927122116089, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:47.302 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Handmade gifts", "language": "en-US", "transcript_delay": 0.0791935920715332, 
+"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:47.314 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:48.196 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Handmade gifts are so special and thoughtful.", "remaining_audio": 0.0, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:48.197 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=19d56f5e7c66, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:48.322 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 125.54 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:25:49.051 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We have lovely handmade items like decor, artisan bags, and crafts. Would you like to check 
+out any specific type of handmade item?", "remaining_audio": 0.7993297576904297, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": 
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:25:51.332 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:25:51.350 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 4.046882390975952, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:13.584 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "paintings or coursitting", "language": "en-US", "transcript_delay": 
+0.00921940803527832, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:13.591 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:14.402 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "What do you suggest?", "language": "en-US", "transcript_delay": 
+0.4291985034942627, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:14.416 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:15.683 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Both paintings and crochet items make really beautiful and unique handmade gifts.", 
+"remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:15.684 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=7e18ae914609, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:15.810 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 126.39 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:16.597 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Paintings add a personal artistic touch, while crochet items like warm scarves or decor feel 
+very cozy and special. Would you like to check out either of these options with the seller?", "remaining_audio": 0.19660592079162598, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:17.144 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:17.536 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:26:17.540 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.137444496154785, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:18.019 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:40.826 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Can we continue now?", "language": "en-US", "transcript_delay": 
+0.004920482635498047, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:40.836 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:41.756 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Of course!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+                 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=0c55a36229c0, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:41.871 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 114.45 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:41.907 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Mother tongue?", "language": "en-US", "transcript_delay": 0.03327441215515137, 
+"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:41.918 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:42.775 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Sure!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": 
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+                 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=60b587049ec4, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:42.897 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 121.81 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:43.084 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Is terrible?", "language": "en-US", "transcript_delay": 0.557227373123169, "room":
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:43.112 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:43.884 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "I am so sorry if anything sounded confusing or difficult.", "remaining_audio": 0.0, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:43.886 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=eb8bf7e6a73e, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:43.996 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 109.46 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:44.315 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:44.598 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:26:45.139 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We can talk in English or any language you prefer, and we can take it nice and easy. Which 
+one would you like to see more details about, the paintings or the crochet items?", "remaining_audio": 1.1638877391815186, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:46.096 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:26:46.112 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.0269737243652344, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:26:58.060 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "I", "language": "en-US", "transcript_delay": 0.5355038642883301, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:03.043 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "I want to talk in Telugu.", "language": "en-US", "transcript_delay": 
+0.02257537841796875, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:03.053 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:04.322 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "అవును, ఖచ్చితంగా!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288,
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:04.323 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=df3b911ee226, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:04.449 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 126.15 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:04.829 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:05.643 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "మనం తెలుగులోనే మాట్లాడుకుందాం. మీకు ఏ రకమైన పెయింటింగ్స్ లేదా క్రోచే ఐటమ్స్ కావాలి అని మీరు చూస్తున్నారు?", "remaining_audio":
+0.760723352432251, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:05.926 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:07.825 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:08.446 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Order", "language": "en-US", "transcript_delay": 0.024268627166748047, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:08.456 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:09.405 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "సరే, మనం తెలుగులోనే మాట్లాడదాం.", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid":
+20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+                 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=5687575da938, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:09.835 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 429.93 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:10.212 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:10.668 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:10.889 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "మీకు ఏ రకమైన పెయింటింగ్స్ లేదా కు్రశెట్ (crochet) వస్తువులు కావాలో చెబితే, వాటి గురించి మరింత సమాచారం ఇస్తాను. అన్నీ సరిగ్గా తెలుసుకోవడానికి మీరు
+నేరుగా షాప్ యజమానిని సంప్రదించవచ్చు.", "remaining_audio": 0.7976667881011963, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u",
+"room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:12.006 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:12.530 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:27:12.548 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 4.100943088531494, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:33.199 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "English", "language": "en-US", "transcript_delay": 0.027039051055908203, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:33.208 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:34.299 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Sure, we can switch back to English!", "remaining_audio": 0.0, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:34.301 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=4c8f80980f38, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:34.433 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 131.77 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:35.116 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "mean, Telugu plus English.", "language": "en-US", "transcript_delay": 
+0.4453129768371582, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:35.126 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:35.846 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Sure!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": 
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:35.847 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=0088e94b6542, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:35.986 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 139.59 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:36.689 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:36.980 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "We can chat in Telugu plus English, no problem at all. Paintings kavala lekunda crochet items
+chustara?", "remaining_audio": 0.15802478790283203, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:38.227 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:27:38.236 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.119886875152588, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:54.986 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Sorry.", "language": "en-US", "transcript_delay": 0.5624537467956543, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:55.002 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:56.211 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "No need to say sorry at all!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", 
+"pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:56.212 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=89d641c0142b, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:56.438 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 225.68 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:56.806 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:57.119 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "No problem. Tell me, would you like to see paintings or crochet items?", "remaining_audio": 
+0.16864442825317383, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:57.806 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Handmade gift items.", "language": "en-US", "transcript_delay": 
+0.5249192714691162, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:57.831 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:58.922 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "No need to say sorry at all!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", 
+"pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:27:58.927 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=0139ef03ec03, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:27:59.080 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 153.15 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:28:00.038 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Handmade gift items chala special ga untayi. Paintings chustara leda crochet items 
+chustara?", "remaining_audio": 0.9973573684692383, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:28:00.908 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:28:00.914 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.107001304626465, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:32.658 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Still because I fair enough.", "language": "en-US", "transcript_delay": 
+4.082645893096924, "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:32.671 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:42:33.348 DEBUG… livekit.agents     received user transcript  
+                                         {"user_transcript": "Coming.", "language": "en-US", "transcript_delay": 4.772160530090332, "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:33.385 INFO … google_g…ai.models AFC is enabled with max remote calls: 10.  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:42:36.358 ERROR… livekit.agents     Error predicting end of turn                                                                         
+                                           Traceback (most recent call last):                                                                   
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for              
+                                               return await fut                                                                                 
+                                                      ^^^^^^^^^                                                                                 
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/…  
+                                           line 146, in do_inference                                                                            
+                                               inf_resp = await fut                                                                             
+                                                          ^^^^^^^^^                                                                             
+                                           asyncio.exceptions.CancelledError                                                                    
+                                                                                                                                                
+                                           The above exception was the direct cause of the following exception:                                 
+                                                                                                                                                
+                                           Traceback (most recent call last):                                                                   
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voic…  
+                                           line 574, in _bounce_eou_task                                                                        
+                                               end_of_turn_probability = await turn_detector.predict_end_of_turn(                               
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                               
+                                                   chat_ctx                                                                                     
+                                                   ^^^^^^^^                                                                                     
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 71, in predict_end_of_turn                                                                      
+                                               return await super().predict_end_of_turn(chat_ctx, timeout=timeout)                              
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              
+                                             File                                                                                               
+                                           "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/tur…  
+                                           line 283, in predict_end_of_turn                                                                     
+                                               result = await asyncio.wait_for(                                                                 
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^                                                                 
+                                                   self._executor.do_inference(self._inference_method(), json_data), timeout=timeout            
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^            
+                                               )                                                                                                
+                                               ^                                                                                                
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for              
+                                               async with timeouts.timeout(timeout):                                                            
+                                                          ~~~~~~~~~~~~~~~~^^^^^^^^^                                                             
+                                             File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__          
+                                               raise TimeoutError from exc_val                                                                  
+                                           TimeoutError                                                                                         
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+Traceback (most recent call last):
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/ipc/job_proc_lazy_main.py", line 146, in 
+do_inference
+    inf_resp = await fut
+               ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/voice/audio_recognition.py", line 574, in 
+_bounce_eou_task
+    end_of_turn_probability = await turn_detector.predict_end_of_turn(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chat_ctx
+        ^^^^^^^^
+    )
+    ^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/multilingual.py", line 71, 
+in predict_end_of_turn
+    return await super().predict_end_of_turn(chat_ctx, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/plugins/turn_detector/base.py", line 283, in 
+predict_end_of_turn
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+        self._executor.do_inference(self._inference_method(), json_data), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/student/anaconda3/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+    12:42:36.362 DEBUG… livekit.agents     using preemptive generation  
+                                         {"preemptive_lead_time": 3.013932704925537, "room": "voice_assistant_room_5107", "pid": 20288, 
+"job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:38.139 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Don't worry, take your time!", "remaining_audio": 0.0, "room": "voice_assistant_room_5107", 
+"pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:38.140 INFO … livekit.…gins.murf [Murf TTS] Stream started - context_id=d211ce795c56, voice=Anisha, style=Conversation,               
+                                           locale=en-IN, min_buffer_size=3, max_buffer_delay_in_ms=0, endpoint=https://global.api.murf.ai       
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:42:38.264 INFO … livekit.…gins.murf [Murf TTS] Murf TTFB (first sentence to first audio): 124.04 ms  
+                                           {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:42:38.841 DEBUG… livekit.agents     sent text to tts  
+                                         {"text": "Local artisans ki valla daggara unna handmade gifts gurinchi seller cheptaru. Paintings 
+kavala leda crochet items kavala decide ayyaka, nenu shop owner ki connect cheyataniki help chestanu.", "remaining_audio": 0.3995983600616455, 
+"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:39.824 DEBUG… livekit.agents     flush audio emitter due to slow audio generation  
+                                         {"room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:42:42.967 INFO … livekit.agents     closing agent session due to participant disconnect (disable via                                     
+                                           `RoomInputOptions.close_on_disconnect=False`)                                                        
+                                         {"room": "voice_assistant_room_5107", "participant": "voice_assistant_user_2810", "reason": 
+"CLIENT_INITIATED", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:42.968 DEBUG… livekit.agents     stream closed  
+                                         {"participant": "voice_assistant_user_2810", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:42.983 DEBUG… livekit.agents     input stream detached  
+                                         {"participant": "voice_assistant_user_2810", "source": "SOURCE_UNKNOWN", "accepted_sources": 
+["SOURCE_MICROPHONE"], "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:44.986 WARNI… livekit.agents     final transcript not received after timeout  
+                                         {"transcript_timeout": 2.0, "interim_transcript": "It's", "room": "voice_assistant_room_5107", "pid": 
+20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:46.597 DEBUG… livekit.…_detector eou prediction  
+                                           {"eou_probability": 0.00029214684036560357, "duration": 1.607, "input": "<|im_start|>assistant\nsure 
+we can chat in telugu plus english no problem at all paintings kavala lekunda crochet items chustara<|im_end|>\n<|im_start|>user\nsorry handmade
+gift items<|im_end|>\n<|im_start|>assistant\nno need to say sorry at all handmade gift items chala special ga untayi paintings chustara leda 
+crochet items chustara<|im_end|>\n<|im_start|>user\nstill because i fair enough coming<|im_end|>\n<|im_start|>assistant\ndon't worry take your 
+time local artisans ki valla daggara<|im_end|>\n<|im_start|>user\nit's", "room": "voice_assistant_room_5107", "pid": 20288, "job_id": 
+"AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:46.598 WARNI… livekit.agents     skipping user input, speech scheduling is paused  
+                                         {"user_input": "It's", "room": "voice_assistant_room_5107", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", 
+"room_id": "RM_SHKJxKWEB6Q8"}
+    12:42:46.600 DEBUG… livekit.agents     session closed  
+                                         {"reason": "participant_disconnected", "error": null, "room": "voice_assistant_room_5107", "pid": 
+20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:43:03.705 DEBUG… livekit.agents     shutting down job task  
+                                         {"reason": "room disconnected", "user_initiated": false, "room": "voice_assistant_room_5107", "pid": 
+20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:43:03.711 DEBUG… livekit.agents     http_session(): closing the httpclient ctx  
+                                         {"pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": "RM_SHKJxKWEB6Q8"}
+    12:43:03.709 INFO … livekit.agents     process exiting  
+                                         {"reason": "room disconnected", "pid": 20288, "job_id": "AJ_2XrLsSYHcX5u", "room_id": 
+"RM_SHKJxKWEB6Q8"}
+    12:47:21.065 INFO … livekit.agents     received job request  
+                                         {"job_id": "AJ_DQgsUuF77CgU", "dispatch_id": "AD_gK4KmMg4E8YR", "room": "voice_assistant_room_4643", 
+"room_id": "RM_J5VCbq6fYKTV", "agent_name": "my-agent", "resuming": false, "enable_recording": false}
+    12:47:21.122 DEBUG… livekit.agents     received assignment  
+                                         {"agent_name": "my-agent", "room_id": "RM_J5VCbq6fYKTV", "room": "voice_assistant_room_4643", "job_id":
+"AJ_DQgsUuF77CgU", "dispatch_id": "AD_gK4KmMg4E8YR", "enable_recording": false}
+    12:47:21.126 WARNI… livekit.agents     no warmed process available for job, waiting for one to be created {"job_id": "AJ_DQgsUuF77CgU"}
+    12:47:21.143 INFO … livekit.agents     initializing process {"pid": 21309}
+    12:47:22.179 INFO … livekit.agents     process initialized {"pid": 21309, "elapsed_time": 1.03}
+                 DEBUG… asyncio            Using selector:             {"pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+                                           EpollSelector                                                                                        
+    12:47:22.738 DEBUG… livekit.agents     input stream attached  
+                                         {"participant": null, "source": "SOURCE_UNKNOWN", "accepted_sources": ["SOURCE_MICROPHONE"], "room": 
+"voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:47:22.766 DEBUG… livekit.agents     http_session(): creating a new httpclient ctx  
+                                         {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": 
+"RM_J5VCbq6fYKTV"}
+VAAPI is supported.
+    12:47:23.954 DEBUG… livekit.agents     using audio io: `RoomIO` -> `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": 
+"RM_J5VCbq6fYKTV"}
+                 DEBUG… livekit.agents     using transcript io: `AgentSession` -> `TranscriptSynchronizer` -> `RoomIO`  
+                                         {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": 
+"RM_J5VCbq6fYKTV"}
+    12:47:24.866 DEBUG… livekit.agents     start reading stream  
+                                         {"participant": "voice_assistant_user_5693", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:47:24.867 DEBUG… livekit.….deepgram Established new Deepgram STT WebSocket connection:  
+                                           {"headers": {"dg-project-id": "6c2f2046-4221-4781-9c5c-ee70242b4080", "dg-request-id": 
+"019fdb15-7336-7072-b0d2-3c8d3f17c4b2", "Date": "Fri, 07 Aug 2026 07:17:23 GMT"}, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:01.676 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.7127991750006331, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:02.270 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 1.2704892360011435, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:04.063 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 3.0083293470021744, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:05.730 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 4.513163538001972, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:06.159 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 4.903043985000302, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:48:06.675 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 5.372932649001246, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:09.238 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.3633391609993559, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:14.095 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 5.143403619999241, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:56.548 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.4307272489997267, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:57.938 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.6771065329997654, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:58.473 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.5857515029952332, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:49:59.999 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 2.0148662039952754, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:50:03.291 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 5.220416446995717, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:50:43.371 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 0.6941371639997378, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:50:46.772 WARNI… livekit.agents     process is unresponsive  
+                                         {"delay": 719, "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:50:48.657 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 5.945456564999709, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:37.186 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 2.30052834599989, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:51.896 WARNI… livekit.agents     process is unresponsive  
+                                         {"delay": 2670, "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:56.260 WARNI… livekit.agents     process is unresponsive  
+                                         {"delay": 6598, "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:59.021 ERROR… livekit            livekit_api::signal_client:454:livekit_api::signal_client - failed to send queued signal: failed to  
+                                           send message to the server                                                                           
+                                  {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:59.061 WARNI… livekit            livekit::rtc_engine:476:livekit::rtc_engine - received session close: "server request to leave"      
+                                           ConnectionTimeout Resume                                                                             
+                                  {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:59.078 WARNI… livekit            livekit::rtc_engine:476:livekit::rtc_engine - received session close: "signal client closed:         
+                                           \"stream closed\"" UnknownReason Resume                                                              
+                                  {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:59.120 ERROR… livekit            livekit::rtc_engine:780:livekit::rtc_engine - resuming connection... attempt: 0  
+                                  {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:51:59.321 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 23.95649788899967, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:00.042 DEBUG… livekit.agents     stream closed  
+                                         {"participant": "voice_assistant_user_5693", "source": "SOURCE_MICROPHONE", "room": 
+"voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:04.609 WARNI… livekit.agents     process is unresponsive  
+                                         {"delay": 548, "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:19.291 DEBUG… livekit.agents     input stream detached  
+                                         {"participant": "voice_assistant_user_5693", "source": "SOURCE_UNKNOWN", "accepted_sources": 
+["SOURCE_MICROPHONE"], "room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:20.055 WARNI… livekit.agents     process is unresponsive  
+                                         {"delay": 818, "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:20.911 WARNI… livekit.…ns.silero inference is slower than realtime  
+                                           {"delay": 23.05956639600689, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.619 WARNI… livekit.agents     final transcript not received after timeout  
+                                         {"transcript_timeout": 2.0, "interim_transcript": "The", "room": "voice_assistant_room_4643", "pid": 
+21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.633 INFO … livekit.agents     Turn detector does not support language None  
+                                         {"room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": 
+"RM_J5VCbq6fYKTV"}
+    12:52:21.638 WARNI… livekit.agents     skipping user input, speech scheduling is paused  
+                                         {"user_input": "The", "room": "voice_assistant_room_4643", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", 
+"room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.670 DEBUG… livekit.agents     session closed  
+                                         {"reason": "user_initiated", "error": null, "room": "voice_assistant_room_4643", "pid": 21309, 
+"job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.690 DEBUG… livekit.agents     shutting down job task  
+                                         {"reason": "", "user_initiated": false, "room": "voice_assistant_room_4643", "pid": 21309, "job_id": 
+"AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.698 INFO … livekit.agents     process exiting  
+                                         {"reason": "", "pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:52:21.713 DEBUG… livekit.agents     http_session(): closing the httpclient ctx  
+                                         {"pid": 21309, "job_id": "AJ_DQgsUuF77CgU", "room_id": "RM_J5VCbq6fYKTV"}
+    12:58:07.152 WARNI… livekit.agents     unexpected message type: 258  
+    12:58:07.171 WARNI… livekit.agents     failed to connect to livekit, retrying in 0s  
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1011, in _connection_task
+    await self._run_ws(ws)
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1093, in _run_ws
+    await asyncio.gather(*tasks)
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1065, in _recv_task
+    raise Exception("worker connection closed unexpectedly")
+Exception: worker connection closed unexpectedly
+
+    12:58:13.835 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_uVn63gMDswD4", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
+    13:02:10.152 WARNI… livekit.agents     unexpected message type: 258  
+    13:02:10.176 WARNI… livekit.agents     failed to connect to livekit, retrying in 0s  
+Traceback (most recent call last):
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1011, in _connection_task
+    await self._run_ws(ws)
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1093, in _run_ws
+    await asyncio.gather(*tasks)
+  File "/home/student/murf-livekit-starter/backend/.venv/lib/python3.13/site-packages/livekit/agents/worker.py", line 1065, in _recv_task
+    raise Exception("worker connection closed unexpectedly")
+Exception: worker connection closed unexpectedly
+
+    13:02:11.609 INFO … livekit.agents     registered worker  
+                                         {"agent_name": "my-agent", "id": "AW_CQJaMdSnSC9E", "url": 
+"wss://murf-voice-agent-va2i3pnp.livekit.cloud", "region": "India South", "protocol": 17}
