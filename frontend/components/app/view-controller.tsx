@@ -33,7 +33,11 @@ interface ViewControllerProps {
 }
 
 export function ViewController({ appConfig }: ViewControllerProps) {
-  const { isConnected, start } = useSessionContext();
+  const session = useSessionContext();
+
+  console.dir(session);
+
+  const { isConnected, start } = session;
   const { resolvedTheme } = useTheme();
 
   return (

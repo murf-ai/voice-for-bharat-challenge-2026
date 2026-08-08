@@ -47,7 +47,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const hdrs = await headers();
   const appConfig = await getAppConfig(hdrs);
   const styles = getStyles(appConfig);
-  const { pageTitle, pageDescription, companyName, logo, logoDark } = appConfig;
+  const pageTitle = "VyapaarMitra";
+const pageDescription =
+  "AI Shopping Assistant for Local Businesses";
+const companyName = "VyapaarMitra";
+const { logo, logoDark } = appConfig;
 
   return (
     <html

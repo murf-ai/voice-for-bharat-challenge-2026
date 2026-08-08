@@ -155,7 +155,7 @@ export function TileLayout({
                       'bg-background rounded-[50px] border border-transparent transition-[border,drop-shadow]',
                       chatOpen && 'border-input shadow-2xl/10 delay-200'
                     )}
-                    style={{ color: audioVisualizerColor }}
+                    style={{ color: "#16a34a" }}
                   />
                 </motion.div>
               )}
