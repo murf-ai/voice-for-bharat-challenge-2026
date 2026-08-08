@@ -61,14 +61,14 @@ export function AudioVisualizer({
     }
     case 'wave': {
       return (
-        <motion.div className={className} {...props}>
+        <motion.div className={cn('flex h-full w-full items-center justify-center', className)} {...props}>
           <MotionAgentAudioVisualizerWave
             state={state}
             audioTrack={audioTrack}
             color={audioVisualizerColor}
             colorShift={audioVisualizerColorShift}
             lineWidth={isChatOpen ? audioVisualizerWaveLineWidth * 2 : audioVisualizerWaveLineWidth}
-            className="size-[300px] md:size-[450px]"
+            className="mx-auto h-full w-full"
           />
         </motion.div>
       );

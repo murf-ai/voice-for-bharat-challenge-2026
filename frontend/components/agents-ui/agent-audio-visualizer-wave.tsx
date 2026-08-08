@@ -210,7 +210,7 @@ function WaveShader({
   const rgbColor = useMemo(() => hexToRgb(color), [color]);
 
   return (
-    <div ref={ref} className={className} {...props}>
+    <div ref={ref} className={cn('flex h-full w-full items-center justify-center', className)} {...props}>
       <ReactShaderToy
         fs={shaderSource}
         devicePixelRatio={globalThis.devicePixelRatio ?? 1}

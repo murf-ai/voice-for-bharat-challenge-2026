@@ -33,20 +33,27 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Murf AI',
-  pageTitle: 'Voice Agent Starter',
-  pageDescription: 'A voice agent powered by Murf Falcon — the fastest TTS API',
+  companyName: 'VyapaarMitra',
+  pageTitle: 'VyapaarMitra - Your AI Shopping Assistant',
+  pageDescription: 'Discover local products, compare options, and connect with nearby businesses using simple voice conversations.',
 
   supportsChatInput: true,
-  supportsVideoInput: true,
-  supportsScreenShare: true,
+  supportsVideoInput: false,
+  supportsScreenShare: false,
   isPreConnectBufferEnabled: true,
 
-  logo: '/murf-logo.svg',
-  accent: '#6366F1',
-  logoDark: '/murf-logo-dark.svg',
-  accentDark: '#818cf8',
-  startButtonText: 'Start talking',
+  logo: '/vyapaar-logo.svg',
+  accent: '#16a34a',
+  logoDark: '/vyapaar-logo.svg',
+  accentDark: '#22c55e',
+  startButtonText: '🎤 Start Voice Conversation',
+
+  // Audio visualization configuration for VyapaarMitra
+  audioVisualizerType: 'wave',
+  audioVisualizerColor: '#16a34a',
+  audioVisualizerColorDark: '#22c55e',
+  audioVisualizerColorShift: 0.3,
+  audioVisualizerWaveLineWidth: 3,
 
   // optional: audio visualization configuration
   // audioVisualizerType: 'bar',

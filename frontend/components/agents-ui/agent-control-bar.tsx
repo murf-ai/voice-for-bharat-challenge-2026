@@ -1,5 +1,5 @@
 'use client';
-
+import { toast } from 'sonner';
 import { type ComponentProps, useEffect, useRef, useState } from 'react';
 import { Track } from 'livekit-client';
 import { Loader, MessageSquareTextIcon, SendHorizontal } from 'lucide-react';
@@ -264,6 +264,17 @@ export function AgentControlBar({
     handleMicrophoneDeviceSelectError,
     handleCameraDeviceSelectError,
   } = useInputControls({ onDeviceError, saveUserChoices });
+  const handleMicrophoneToggle = async (enabled: boolean) => {
+  await microphoneToggle.toggle(enabled);
+
+  if (!enabled) {
+    toast.warning("🎤 Microphone muted", {
+      description:
+        "Your microphone is muted. Please unmute it so VyapaarMitra can hear you.",
+      duration: 4000,
+    });
+  }
+};
 
   const handleSendMessage = async (message: string) => {
     await send(message);
@@ -319,7 +330,7 @@ export function AgentControlBar({
               pressed={microphoneToggle.enabled}
               disabled={microphoneToggle.pending}
               audioTrack={microphoneTrack}
-              onPressedChange={microphoneToggle.toggle}
+              onPressedChange={handleMicrophoneToggle}
               onActiveDeviceChange={handleAudioDeviceChange}
               onMediaDeviceError={handleMicrophoneDeviceSelectError}
               className={cn(

@@ -1,4 +1,6 @@
 import logging
+import os
+from typing import Optional
 
 from dotenv import load_dotenv
 from livekit import rtc
@@ -17,6 +19,31 @@ from livekit.plugins import murf, silero, google, deepgram, noise_cancellation
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 logger = logging.getLogger("agent")
+
+# Language detection and locale mapping
+LANGUAGE_LOCALE_MAP = {
+    "telugu": "te-IN",
+    "hindi": "hi-IN",
+    "english": "en-IN",
+}
+
+def detect_language(text: str) -> str:
+    """Detect language from text using script detection."""
+    if not text:
+        return "english"
+    
+    # Telugu script detection (Unicode range)
+    if any('\u0C00' <= c <= '\u0C7F' for c in text):
+        return "telugu"
+    # Hindi/Devanagari script detection
+    if any('\u0900' <= c <= '\u097F' for c in text):
+        return "hindi"
+    
+    return "english"
+
+def get_locale_for_language(language: str) -> str:
+    """Get TTS locale for detected language."""
+    return LANGUAGE_LOCALE_MAP.get(language.lower(), "en-IN")
 
 load_dotenv(".env.local")
 
@@ -50,37 +77,41 @@ You do NOT know:
 
 If you don't know something, clearly say so. Never guess.
 
-LANGUAGE
-Always reply in the SAME language as the user.
+LANGUAGE & CODE-MIXING
+CRITICAL: You MUST ALWAYS respond in the exact same language (or language mix) as the user's current message.
+This is the most important rule. Break it and the whole system fails.
 
-Examples:
-User: Hello
-Assistant: Hello! How can I help you?
+Language Detection Rules:
+- Analyze EVERY single user message independently
+- DO NOT remember previous messages - each message is brand new
+- Identify which languages are in the current message
+- Respond using ONLY those languages
 
-User: नमस्ते
-Assistant: नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?
+Code-Mixing Examples (MUST follow these patterns):
+User (Telugu): నమస్కారం
+Assistant (Telugu): నమస్కారం! నేను ఎలా సహాయం చేయగలను?
 
-User: నమస్కారం
-Assistant: నమస్కారం! నేను మీకు ఎలా సహాయం చేయగలను?
+User (Hindi): नमस्ते
+Assistant (Hindi): नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?
 
-User: Hi, naaku handmade bags kavali.
-Assistant: Sure! మీకు handmade bags గురించి సహాయం చేస్తాను.
+User (English): Hello
+Assistant (English): Hello! How can I help you?
 
-Determine the language for EVERY user message independently.
+User (Mixed Telugu+English): నా కోసం handmade bags చూసిన చెప్పండి
+Assistant (Mixed Telugu+English): Sure! మీకు handmade bags కోసం సహాయం చేస్తాను. ఏ రకమైన bags చూస్తున్నారు?
 
-Do NOT lock onto the language used at the beginning of the conversation.
+User (Mixed Hindi+English): मुझे leather bags चाहिए
+Assistant (Mixed Hindi+English): बिल्कुल! आपके लिए leather bags खोजने में मदद करूंगा। किस तरह के bags ढूंढ रहे हैं?
 
-For each reply:
-
-- If the user's current message is in English, reply in English.
-- If the user's current message is in Telugu, reply in Telugu.
-- If the user's current message is in Hindi, reply in Hindi.
-- If the user's current message mixes languages (for example Telugu + English or Hindi + English), reply using the same mix and similar level of formality.
-
-Always follow the language of the MOST RECENT user message, not the previous conversation.
-
-Never translate unless the user asks.
-Mirror the user's language.
+ABSOLUTE RULES:
+1. If user speaks Telugu → respond in Telugu
+2. If user speaks Hindi → respond in Hindi  
+3. If user speaks English → respond in English
+4. If user mixes Telugu+English → respond in Telugu+English (use same proportion)
+5. If user mixes Hindi+English → respond in Hindi+English (use same proportion)
+6. NEVER add languages the user didn't use
+7. NEVER translate to a language the user didn't ask for
+8. Each message is independent - don't carry language from previous messages
 
 GUARDRAILS
 Never:
@@ -154,23 +185,31 @@ async def my_agent(ctx: JobContext):
     # Set up a voice AI pipeline using Murf Falcon, Gemini, Deepgram, and the LiveKit turn detector
     session = AgentSession(
         # Speech-to-text (STT) is your agent's ears, turning the user's speech into text that the LLM can understand
+        # Deepgram nova-3 supports multilingual recognition (Telugu, Hindi, English, etc.)
         # See all available models at https://docs.livekit.io/agents/models/stt/
-        stt=deepgram.STT(model="nova-3"),
+        stt=deepgram.STT(
+            model="nova-3",
+            language="multi",  # Enable multilingual recognition
+        ),
         # A Large Language Model (LLM) is your agent's brain, processing user input and generating a response
+        # Gemini 3.5 Flash Lite supports Telugu, Hindi, English and code-mixing
         # See all available models at https://docs.livekit.io/agents/models/llm/
         llm=google.LLM(
-                model="gemini-3.5-flash-lite",
-            ),
+            model="gemini-3.5-flash-lite",
+        ),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
+        # WARNING: Locale must match the language of the response text
+        # This will be set dynamically based on detected response language
         # See all available models as well as voice selections at https://docs.livekit.io/agents/models/tts/
         tts=murf.TTS(
-                voice="Anisha", 
-                locale="en-IN",
-                style="Conversation",
-                tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
-                text_pacing=True
-            ),
+            voice="Anisha", 
+            locale="en-IN",  # Default locale - will be overridden based on response language
+            style="Conversation",
+            tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
+            text_pacing=True
+        ),
         # VAD and turn detection are used to determine when the user is speaking and when the agent should respond
+        # MultilingualModel supports Telugu, Hindi, English
         # See more at https://docs.livekit.io/agents/build/turns
         turn_detection=MultilingualModel(),
         vad=ctx.proc.userdata["vad"],

@@ -8,6 +8,7 @@ import {
   AgentControlBar,
   type AgentControlBarControls,
 } from '@/components/agents-ui/agent-control-bar';
+import { AgentStatusCard } from '@/components/agents-ui/agent-status-card';
 import { Shimmer } from '@/components/ai-elements/shimmer';
 import { cn } from '@/lib/shadcn/utils';
 import { TileLayout } from './tile-view';
@@ -205,9 +206,9 @@ export function AgentSessionView_01({
       {...props}
     >
       <Fade top className="absolute inset-x-4 top-0 z-10 h-40" />
-      {/* transcript */}
-
-      <div className="absolute top-0 bottom-[135px] flex w-full flex-col md:bottom-[170px]">
+      {/* Main content area */}
+      <div className="absolute top-0 bottom-[135px] flex w-full flex-col items-center justify-center md:bottom-[170px] px-4">
+        {/* Chat transcript */}
         <AnimatePresence>
           {chatOpen && (
             <motion.div
@@ -222,10 +223,13 @@ export function AgentSessionView_01({
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
       {/* Tile layout */}
       <TileLayout
         chatOpen={chatOpen}
+        agentState={agentState}
+        onStartNewConversation={() => session.end()}
         audioVisualizerType={audioVisualizerType}
         audioVisualizerColor={audioVisualizerColor}
         audioVisualizerColorShift={audioVisualizerColorShift}
