@@ -14,9 +14,13 @@ from livekit.agents import (
     inference,
     tokenize,
     room_io,
+    function_tool,
+    RunContext,
 )
 from livekit.plugins import murf, silero, google, deepgram, noise_cancellation
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
+import db
+import json
 
 logger = logging.getLogger("agent")
 
@@ -60,6 +64,7 @@ A successful conversation should:
 - Answer general shopping questions.
 - Guide them to the seller whenever confirmation is required.
 - End the conversation politely.
+- Use caller memory to provide personalized experiences.
 
 KNOWLEDGE
 You know about:
@@ -67,6 +72,7 @@ You know about:
 - Product categories
 - Shopping guidance
 - Customer support
+- Caller's past orders, preferences, and details if available in memory.
 
 You do NOT know:
 - Live inventory
@@ -83,7 +89,7 @@ This is the most important rule. Break it and the whole system fails.
 
 Language Detection Rules:
 - Analyze EVERY single user message independently
-- DO NOT remember previous messages - each message is brand new
+- DO NOT remember previous messages - each message is brand new (EXCEPT for the caller memory retrieved at the start)
 - Identify which languages are in the current message
 - Respond using ONLY those languages
 
@@ -101,7 +107,7 @@ User (Mixed Telugu+English): నా కోసం handmade bags చూసిన �
 Assistant (Mixed Telugu+English): Sure! మీకు handmade bags కోసం సహాయం చేస్తాను. ఏ రకమైన bags చూస్తున్నారు?
 
 User (Mixed Hindi+English): मुझे leather bags चाहिए
-Assistant (Mixed Hindi+English): बिल्कुल! आपके लिए leather bags खोजने में मदद करूंगा। किस तरह के bags ढूंढ रहे हैं?
+Assistant (Hindi+English): बिल्कुल! आपके लिए leather bags खोजने में मदद करूंगा। किस तरह के bags ढूंढ रहे हैं?
 
 ABSOLUTE RULES:
 1. If user speaks Telugu → respond in Telugu
@@ -111,7 +117,14 @@ ABSOLUTE RULES:
 5. If user mixes Hindi+English → respond in Hindi+English (use same proportion)
 6. NEVER add languages the user didn't use
 7. NEVER translate to a language the user didn't ask for
-8. Each message is independent - don't carry language from previous messages
+8. Each message is independent - don't carry language from previous messages (EXCEPT for caller memory)
+
+PERSONALIZATION & MEMORY RULES:
+1. At the start of the conversation, call `lookup_caller` using the `user_id`.
+2. If record found, greet by name and mention relevant past facts (e.g., "Namaste Ramesh, last time we spoke about your order of 5kg rice. Should I repeat the same order?").
+3. If no record, proceed as a new caller.
+4. Before calling `save_caller_info`, YOU MUST ASK PERMISSION OUT LOUD: "I'd like to remember this for next time — is that okay?".
+5. If the user says NO to saving, DO NOT call `save_caller_info`.
 
 GUARDRAILS
 Never:
@@ -137,7 +150,7 @@ Avoid bullet points, markdown, emojis, or technical language while speaking.
 If the user is silent for a few seconds, ask:
 "Are you still there? I'm happy to help whenever you're ready."
 
-Start every new conversation by saying:
+Start every new conversation by saying (after calling lookup_caller):
 "Hello! I'm VyapaarMitra. I help customers discover products from local businesses and artisans. How can I help you today?"
 """
 
@@ -146,22 +159,33 @@ class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(instructions=SYSTEM_PROMPT)
 
-    # To add tools, use the @function_tool decorator.
-    # Here's an example that adds a simple weather tool.
-    # You also have to add `from livekit.agents import function_tool, RunContext` to the top of this file
-    # @function_tool
-    # async def lookup_weather(self, context: RunContext, location: str):
-    #     """Use this tool to look up current weather information in the given location.
-    #
-    #     If the location is not supported by the weather service, the tool will indicate this. You must tell the user the location's weather is unavailable.
-    #
-    #     Args:
-    #         location: The location to look up weather information for (e.g. city name)
-    #     """
-    #
-    #     logger.info(f"Looking up weather for {location}")
-    #
-    #     return "sunny with a temperature of 70 degrees."
+    @function_tool
+    async def lookup_caller(self, context: RunContext, user_id: str):
+        """Use this tool to look up a caller's record in the database.
+
+        Args:
+            user_id: The unique identifier for the caller.
+        """
+        logger.info(f"Looking up caller: {user_id}")
+        record = db.lookup_caller(user_id)
+        if record:
+            return json.dumps(record)
+        return "No record found."
+
+    @function_tool
+    async def save_caller_info(self, context: RunContext, user_id: str, name: str, language_preference: str, facts: str):
+        """Use this tool to save a caller's record in the database.
+        
+        Args:
+            user_id: The unique identifier for the caller.
+            name: The caller's name.
+            language_preference: The caller's preferred language (e.g., 'English', 'Telugu').
+            facts: A JSON string containing facts about the caller (e.g., '{"past_orders": ["rice"], "usual_quantities": ["5kg"]}').
+        """
+        logger.info(f"Saving caller info for: {user_id}")
+        facts_dict = json.loads(facts)
+        db.save_caller_info(user_id, name, language_preference, facts_dict)
+        return "Caller information saved successfully."
 
 
 server = AgentServer()
@@ -189,7 +213,7 @@ async def my_agent(ctx: JobContext):
         # See all available models at https://docs.livekit.io/agents/models/stt/
         stt=deepgram.STT(
             model="nova-3",
-            language="multi",  # Enable multilingual recognition
+            language="multi",
         ),
         # A Large Language Model (LLM) is your agent's brain, processing user input and generating a response
         # Gemini 3.5 Flash Lite supports Telugu, Hindi, English and code-mixing
@@ -198,12 +222,9 @@ async def my_agent(ctx: JobContext):
             model="gemini-3.5-flash-lite",
         ),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
-        # WARNING: Locale must match the language of the response text
-        # This will be set dynamically based on detected response language
         # See all available models as well as voice selections at https://docs.livekit.io/agents/models/tts/
         tts=murf.TTS(
             voice="Anisha", 
-            locale="en-IN",  # Default locale - will be overridden based on response language
             style="Conversation",
             tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
             text_pacing=True
