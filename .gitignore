@@ -2,3 +2,5 @@
 .env.*
 !.env.example
 .DS_Store
+*.db
+backend/src/agent_memory.db
