@@ -1,6 +1,5 @@
+import json
 import logging
-import os
-from typing import Optional
 
 from dotenv import load_dotenv
 from livekit import rtc
@@ -10,17 +9,16 @@ from livekit.agents import (
     AgentSession,
     JobContext,
     JobProcess,
-    cli,
-    inference,
-    tokenize,
-    room_io,
-    function_tool,
     RunContext,
+    cli,
+    function_tool,
+    room_io,
+    tokenize,
 )
-from livekit.plugins import murf, silero, google, deepgram, noise_cancellation
+from livekit.plugins import deepgram, google, murf, noise_cancellation, silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
+
 import db
-import json
 
 logger = logging.getLogger("agent")
 
@@ -35,14 +33,14 @@ def detect_language(text: str) -> str:
     """Detect language from text using script detection."""
     if not text:
         return "english"
-    
+
     # Telugu script detection (Unicode range)
     if any('\u0C00' <= c <= '\u0C7F' for c in text):
         return "telugu"
     # Hindi/Devanagari script detection
     if any('\u0900' <= c <= '\u097F' for c in text):
         return "hindi"
-    
+
     return "english"
 
 def get_locale_for_language(language: str) -> str:
@@ -73,51 +71,47 @@ You know about:
 - Shopping guidance
 - Customer support
 - Caller's past orders, preferences, and details if available in memory.
+- Real-time product search, price, stock, and availability using the `search_products` tool.
 
 You do NOT know:
-- Live inventory
-- Exact prices
 - Order status
 - Delivery dates
 - Payment confirmation
 
 If you don't know something, clearly say so. Never guess.
 
-LANGUAGE & CODE-MIXING
-CRITICAL: You MUST ALWAYS respond in the exact same language (or language mix) as the user's current message.
-This is the most important rule. Break it and the whole system fails.
+PRODUCT SEARCH & CATALOGUE RULES
+1. Always call `search_products` when the user asks about:
+   - product availability (e.g., "Do you have iPhone?", "Is coffee available?")
+   - product price (e.g., "How much is shampoo?", "What is the price of bags?")
+   - ordering a product (e.g., "Order protein powder.", "I want to buy tea.")
+   - searching for a product (e.g., "I need cooking oil.", "Show me wireless headphones.")
+   - stock information (e.g., "How many units do you have?", "Is it in stock?")
+2. Search query translation: If the user asks in Telugu, Hindi, or a mixed language, translate the product search query to English before calling `search_products` to ensure the English-based catalogue is searched successfully.
+3. Live Catalogue Responses:
+   - Always mention that the data comes from today's live catalogue.
+   - Never read raw JSON to the user. Respond naturally in a conversational style.
+   - If products are found:
+     - If multiple products exist, summarize the top 3 products naturally.
+     - Include product name, price (in INR), stock, rating, and availability in your description.
+     - Example response for single product: "I found Samsung Galaxy S24. Price is ₹76415. Stock available: 14 units. Rating: 4.8 stars. This information is from today's live catalogue."
+   - If the tool returns that no products were found, say exactly:
+     "Sorry, I couldn't find that product in today's live catalogue."
+   - If the tool returns that the API failed, timed out, or had an error, say exactly:
+     "I'm sorry. I couldn't reach today's live product catalogue. Please try again after a few moments."
+   - Never hallucinate products or prices not returned by the tool.
 
-Language Detection Rules:
-- Analyze EVERY single user message independently
-- DO NOT remember previous messages - each message is brand new (EXCEPT for the caller memory retrieved at the start)
-- Identify which languages are in the current message
-- Respond using ONLY those languages
-
-Code-Mixing Examples (MUST follow these patterns):
-User (Telugu): నమస్కారం
-Assistant (Telugu): నమస్కారం! నేను ఎలా సహాయం చేయగలను?
-
-User (Hindi): नमस्ते
-Assistant (Hindi): नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?
-
-User (English): Hello
-Assistant (English): Hello! How can I help you?
-
-User (Mixed Telugu+English): నా కోసం handmade bags చూసిన చెప్పండి
-Assistant (Mixed Telugu+English): Sure! మీకు handmade bags కోసం సహాయం చేస్తాను. ఏ రకమైన bags చూస్తున్నారు?
-
-User (Mixed Hindi+English): मुझे leather bags चाहिए
-Assistant (Hindi+English): बिल्कुल! आपके लिए leather bags खोजने में मदद करूंगा। किस तरह के bags ढूंढ रहे हैं?
-
-ABSOLUTE RULES:
-1. If user speaks Telugu → respond in Telugu
-2. If user speaks Hindi → respond in Hindi  
-3. If user speaks English → respond in English
-4. If user mixes Telugu+English → respond in Telugu+English (use same proportion)
-5. If user mixes Hindi+English → respond in Hindi+English (use same proportion)
-6. NEVER add languages the user didn't use
-7. NEVER translate to a language the user didn't ask for
-8. Each message is independent - don't carry language from previous messages (EXCEPT for caller memory)
+LANGUAGE & SCRIPT
+CRITICAL: You MUST ALWAYS detect the language and script the user is speaking, and reply in the exact same language and script, unless the user explicitly requests another language.
+- English → English script.
+- Telugu → తెలుగు script.
+- Hindi → देवनागरी script.
+- NEVER romanize Telugu or Hindi.
+- NEVER mix scripts unless the user intentionally code-mixes.
+- If the user speaks Telugu, reply completely in Telugu script.
+- If the user speaks Hindi, reply completely in Devanagari.
+- If the user speaks English, reply in English.
+- If the user mixes languages, naturally match the user's style while keeping each language in its correct script.
 
 PERSONALIZATION & MEMORY RULES:
 1. At the start of the conversation, call `lookup_caller` using the `user_id`.
@@ -130,7 +124,6 @@ GUARDRAILS
 Never:
 - Confirm orders.
 - Confirm payments.
-- Confirm stock availability.
 - Confirm delivery dates.
 - Promise discounts.
 - Pretend to be the seller.
@@ -175,7 +168,7 @@ class Assistant(Agent):
     @function_tool
     async def save_caller_info(self, context: RunContext, user_id: str, name: str, language_preference: str, facts: str):
         """Use this tool to save a caller's record in the database.
-        
+
         Args:
             user_id: The unique identifier for the caller.
             name: The caller's name.
@@ -186,6 +179,60 @@ class Assistant(Agent):
         facts_dict = json.loads(facts)
         db.save_caller_info(user_id, name, language_preference, facts_dict)
         return "Caller information saved successfully."
+
+    @function_tool
+    async def search_products(self, context: RunContext, query: str) -> str:
+        """Use this tool to search for products in today's live catalogue when the user asks about product availability, price, stock, ordering, or searching for a product.
+
+        Args:
+            query: The name, keyword, or category of the product to search for (e.g., 'iPhone', 'oil', 'shampoo').
+        """
+        logger.info(f"Searching products for query: {query}")
+        try:
+            import asyncio
+            import urllib.parse
+            import urllib.request
+
+            url = f"https://dummyjson.com/products/search?q={urllib.parse.quote(query)}"
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+            )
+
+            loop = asyncio.get_running_loop()
+
+            def _fetch():
+                with urllib.request.urlopen(req, timeout=5) as response:
+                    return response.read().decode("utf-8")
+
+            response_text = await loop.run_in_executor(None, _fetch)
+            data = json.loads(response_text)
+
+            products = data.get("products", [])
+            if not products:
+                return json.dumps({"products": [], "status": "no_results"})
+
+            # Keep only the top 3 products
+            top_products = products[:3]
+            parsed_products = []
+            for p in top_products:
+                price_usd = p.get("price", 0)
+                price_inr = round(price_usd * 85)
+                parsed_products.append({
+                    "product_name": p.get("title"),
+                    "brand": p.get("brand", "Unknown"),
+                    "price": f"₹{price_inr}",
+                    "stock": p.get("stock"),
+                    "rating": p.get("rating"),
+                    "category": p.get("category"),
+                    "availability": p.get("availabilityStatus", "In Stock" if p.get("stock", 0) > 0 else "Out of Stock")
+                })
+
+            return json.dumps({"products": parsed_products, "status": "success"})
+
+        except Exception as e:
+            logger.error(f"Error calling search products API: {e}")
+            return json.dumps({"products": [], "status": "error", "message": str(e)})
 
 
 server = AgentServer()
@@ -224,7 +271,7 @@ async def my_agent(ctx: JobContext):
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
         # See all available models as well as voice selections at https://docs.livekit.io/agents/models/tts/
         tts=murf.TTS(
-            voice="Anisha", 
+            voice="Anisha",
             style="Conversation",
             tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
             text_pacing=True
