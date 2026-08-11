@@ -149,8 +149,14 @@ Start every new conversation by saying (after calling lookup_caller):
 
 
 class Assistant(Agent):
-    def __init__(self) -> None:
-        super().__init__(instructions=SYSTEM_PROMPT)
+    def __init__(self, order_details: str = None) -> None:
+        if order_details:
+            outbound_greeting = f"This is VyapaarMitra, your local shop's voice assistant. I am calling to confirm your recent order: {order_details}. If this isn't a good time, just say so and I'll call back later."
+            instructions = f"{SYSTEM_PROMPT}\n\nCRITICAL: You are currently on an outbound call. Your FIRST response MUST be exactly: '{outbound_greeting}'"
+        else:
+            instructions = SYSTEM_PROMPT
+        super().__init__(instructions=instructions)
+        self.order_details = order_details
 
     @function_tool
     async def lookup_caller(self, context: RunContext, user_id: str):
@@ -247,6 +253,7 @@ server.setup_fnc = prewarm
 
 @server.rtc_session(agent_name="my-agent")
 async def my_agent(ctx: JobContext):
+    logger.info(f"Agent triggered for room: {ctx.room.name}")
     # Logging setup
     # Add any other context you want in all log entries here
     ctx.log_context_fields = {
@@ -302,11 +309,20 @@ async def my_agent(ctx: JobContext):
     #   avatar_id="...",  # See https://docs.livekit.io/agents/models/avatar/plugins/hedra
     # )
     # # Start the avatar and wait for it to join
-    # await avatar.start(session, room=ctx.room)
+    # Join the room and connect to the user
+    await ctx.connect()
+
+    # Detect outbound call via metadata
+    order_details = None
+    for participant in ctx.room.remote_participants.values():
+        logger.info(f"Participant {participant.identity} metadata: {participant.metadata}")
+        if participant.metadata and "order:" in participant.metadata:
+            order_details = participant.metadata
+            break
 
     # Start the session, which initializes the voice pipeline and warms up the models
     await session.start(
-        agent=Assistant(),
+        agent=Assistant(order_details=order_details),
         room=ctx.room,
         room_options=room_io.RoomOptions(
             audio_input=room_io.AudioInputOptions(
@@ -320,8 +336,15 @@ async def my_agent(ctx: JobContext):
         ),
     )
 
-    # Join the room and connect to the user
-    await ctx.connect()
+    # For outbound calls, the agent must speak first (open the conversation)
+    await session.generate_reply(
+        instructions=(
+            "Greet the caller now. Say who you are (VyapaarMitra, their local shop's "
+            "voice assistant), why you're calling (to confirm their recent order), "
+            "and that they can say 'stop' or 'not now' at any time to end the call. "
+            "Then mention the order details naturally."
+        )
+    )
 
 
 if __name__ == "__main__":
