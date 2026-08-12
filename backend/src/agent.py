@@ -1,5 +1,9 @@
 import json
 import logging
+import os
+import secrets
+import string
+import requests
 
 from dotenv import load_dotenv
 from livekit import rtc
@@ -114,11 +118,30 @@ CRITICAL: You MUST ALWAYS detect the language and script the user is speaking, a
 - If the user mixes languages, naturally match the user's style while keeping each language in its correct script.
 
 PERSONALIZATION & MEMORY RULES:
-1. At the start of the conversation, call `lookup_caller` using the `user_id`.
-2. If record found, greet by name and mention relevant past facts (e.g., "Namaste Ramesh, last time we spoke about your order of 5kg rice. Should I repeat the same order?").
-3. If no record, proceed as a new caller.
-4. Before calling `save_caller_info`, YOU MUST ASK PERMISSION OUT LOUD: "I'd like to remember this for next time — is that okay?".
-5. If the user says NO to saving, DO NOT call `save_caller_info`.
+1. Caller memory (if any) is provided to you directly in your
+instructions at the start of the call -- you do not need to call
+lookup_caller yourself unless a different user_id is mentioned
+mid-call.
+2. If a record was found, greet by name and mention relevant past facts.
+If no record was found, proceed as a new caller.
+3. Before calling `save_caller_info`, YOU MUST ASK PERMISSION OUT LOUD: "I'd like to remember this for next time — is that okay?".
+4. If the user says NO to saving, DO NOT call `save_caller_info`.
+
+HUMAN ESCALATION RULES:
+1. ONLY call `create_escalation` in the following two situations:
+   - The caller has a payment, refund, or order dispute that you cannot resolve yourself.
+   - The caller asks something genuinely outside your knowledge or capability (an out-of-scope question you cannot answer confidently).
+2. A normal conversation (e.g., asking about stock, searching products, placing a normal order) must NEVER trigger `create_escalation`.
+3. Before calling `create_escalation`, you MUST ask the caller for permission out loud: tell them what information will be shared (a short summary of the issue, not the full conversation) and ask if that is okay.
+   - If they say YES/agree: Call the `create_escalation` tool.
+   - If they say NO/refuse: DO NOT call the tool. Continue helping them within your normal capabilities.
+4. The escalation summary must only include:
+   - Who needs help (name/user_id if known from memory)
+   - What happened (short description)
+   - What the agent already checked/tried
+   - Urgency (low/medium/high — pick based on context)
+   - Caller's language preference and preferred follow-up method (call back / message)
+5. NEVER include passwords, OTPs, PINs, account numbers, or other sensitive data in any escalation.
 
 GUARDRAILS
 Never:
@@ -143,18 +166,23 @@ Avoid bullet points, markdown, emojis, or technical language while speaking.
 If the user is silent for a few seconds, ask:
 "Are you still there? I'm happy to help whenever you're ready."
 
-Start every new conversation by saying (after calling lookup_caller):
+Start every new conversation by saying:
 "Hello! I'm VyapaarMitra. I help customers discover products from local businesses and artisans. How can I help you today?"
 """
 
 
 class Assistant(Agent):
-    def __init__(self, order_details: str = None) -> None:
+    def __init__(self, order_details: str = None, caller_record: dict = None) -> None:
+        if caller_record:
+            caller_context = f"The caller has a saved record: {json.dumps(caller_record)}. Greet them by name using relevant facts, and Do NOT call lookup_caller again for this caller -- you already have their info."
+        else:
+            caller_context = "No record found for this caller. Treat them as a new caller. Do NOT call lookup_caller -- there is nothing to look up."
+
         if order_details:
             outbound_greeting = f"This is VyapaarMitra, your local shop's voice assistant. I am calling to confirm your recent order: {order_details}. If this isn't a good time, just say so and I'll call back later."
-            instructions = f"{SYSTEM_PROMPT}\n\nCRITICAL: You are currently on an outbound call. Your FIRST response MUST be exactly: '{outbound_greeting}'"
+            instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}\n\nCRITICAL: You are currently on an outbound call. Your FIRST response MUST be exactly: '{outbound_greeting}'"
         else:
-            instructions = SYSTEM_PROMPT
+            instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}"
         super().__init__(instructions=instructions)
         self.order_details = order_details
 
@@ -240,6 +268,97 @@ class Assistant(Agent):
             logger.error(f"Error calling search products API: {e}")
             return json.dumps({"products": [], "status": "error", "message": str(e)})
 
+    @function_tool
+    async def create_escalation(
+        self,
+        context: RunContext,
+        user_id: str,
+        caller_name: str,
+        what_happened: str,
+        checked_tried: str,
+        urgency: str,
+        language_preference: str,
+        follow_up_method: str,
+    ) -> str:
+        """Create a human escalation request when a caller has an unresolved payment, refund,
+        or order dispute, or when they ask something genuinely outside your knowledge or capability.
+        Before calling this tool, you must ask the caller's permission out loud, tell them
+        a short summary of what is shared, and proceed only if they say yes.
+
+        Args:
+            user_id: The unique identifier of the caller.
+            caller_name: The name of the caller (if known from memory, otherwise 'Unknown').
+            what_happened: A short description of the issue or dispute.
+            checked_tried: What you (the agent) already checked or tried during the call.
+            urgency: The urgency level. Must be 'low', 'medium', or 'high' based on context.
+            language_preference: The caller's language preference (e.g., 'English', 'Telugu', 'Hindi').
+            follow_up_method: The caller's preferred method for follow-up ('call back' or 'message').
+        """
+        logger.info(f"Creating escalation for user {user_id} ({caller_name})")
+
+        # Generate 6-char alphanumeric reference ID
+        alphabet = string.ascii_uppercase + string.digits
+        reference_id = "".join(secrets.choice(alphabet) for _ in range(6))
+
+        # Check webhook URL
+        webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+        if not webhook_url:
+            logger.error("DISCORD_WEBHOOK_URL environment variable is not set.")
+            return "I'm having trouble sending this request right now, please try again in a few minutes."
+
+        # Map color based on urgency
+        color_map = {
+            "high": 0xDC143C,    # Crimson/Red
+            "medium": 0xFFA500,  # Orange
+            "low": 0x228B22,     # Forest Green
+        }
+        color = color_map.get(urgency.lower(), 0x808080)
+
+        # Structure the fields of the Discord embed
+        fields = [
+            {"name": "Reference ID", "value": reference_id, "inline": True},
+            {"name": "Caller Name", "value": caller_name if caller_name else "Unknown", "inline": True},
+            {"name": "User ID", "value": user_id if user_id else "Unknown", "inline": True},
+            {"name": "What Happened", "value": what_happened if what_happened else "Not specified", "inline": False},
+            {"name": "What Checked/Tried", "value": checked_tried if checked_tried else "Not specified", "inline": False},
+            {"name": "Urgency", "value": urgency.upper() if urgency else "LOW", "inline": True},
+            {"name": "Language Preference", "value": language_preference if language_preference else "Unknown", "inline": True},
+            {"name": "Preferred Follow-up", "value": follow_up_method if follow_up_method else "Not specified", "inline": True},
+        ]
+
+        # Make sure values are not empty or only whitespace as Discord API throws bad request on empty embed fields
+        for field in fields:
+            if not field["value"] or str(field["value"]).strip() == "":
+                field["value"] = "Not Provided"
+
+        payload = {
+            "embeds": [
+                {
+                    "title": f"🚨 Human Escalation - Ref: {reference_id}",
+                    "color": color,
+                    "fields": fields
+                }
+            ]
+        }
+
+        try:
+            # Run blocking request in an executor
+            import asyncio
+            loop = asyncio.get_running_loop()
+
+            def _send():
+                response = requests.post(webhook_url, json=payload, timeout=5)
+                response.raise_for_status()
+                return response
+
+            await loop.run_in_executor(None, _send)
+
+        except Exception as e:
+            logger.error(f"Error calling Discord webhook: {e}")
+            return "I'm having trouble sending this request right now, please try again in a few minutes."
+
+        return f"Successfully created escalation. Reference ID: {reference_id}. Someone from the team will follow up, usually within a few hours — I can't guarantee an immediate reply."
+
 
 server = AgentServer()
 
@@ -320,9 +439,11 @@ async def my_agent(ctx: JobContext):
             order_details = participant.metadata
             break
 
+    caller_record = db.lookup_caller(user_id="default_user")
+
     # Start the session, which initializes the voice pipeline and warms up the models
     await session.start(
-        agent=Assistant(order_details=order_details),
+        agent=Assistant(order_details=order_details, caller_record=caller_record),
         room=ctx.room,
         room_options=room_io.RoomOptions(
             audio_input=room_io.AudioInputOptions(
@@ -336,15 +457,21 @@ async def my_agent(ctx: JobContext):
         ),
     )
 
-    # For outbound calls, the agent must speak first (open the conversation)
-    await session.generate_reply(
-        instructions=(
-            "Greet the caller now. Say who you are (VyapaarMitra, their local shop's "
-            "voice assistant), why you're calling (to confirm their recent order), "
-            "and that they can say 'stop' or 'not now' at any time to end the call. "
-            "Then mention the order details naturally."
+    if order_details:
+        # Outbound calls: the agent must speak first
+        await session.generate_reply(
+            instructions=(
+                "Greet the caller now. Say who you are (VyapaarMitra, their local shop's "
+                "voice assistant), why you're calling (to confirm their recent order), "
+                "and that they can say 'stop' or 'not now' at any time to end the call. "
+                "Then mention the order details naturally."
+            )
         )
-    )
+    else:
+        # Inbound/browser sessions: greet normally, using context provided in instructions
+        await session.generate_reply(
+            instructions="Greet the caller now as VyapaarMitra, using any caller memory context you have."
+        )
 
 
 if __name__ == "__main__":

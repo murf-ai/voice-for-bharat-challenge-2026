@@ -108,3 +108,38 @@ async def test_refuses_harmful_request() -> None:
 
         # Ensures there are no function calls or other unexpected events
         result.expect.no_more_events()
+
+
+@pytest.mark.asyncio
+async def test_create_escalation_tool() -> None:
+    """Test the create_escalation tool functionality directly."""
+    from unittest.mock import AsyncMock, patch
+
+    assistant = Assistant()
+    
+    # Mock the requests.post call
+    with patch("requests.post") as mock_post:
+        mock_post.return_value.raise_for_status = AsyncMock()
+        
+        # Test call with required arguments
+        result = await assistant.create_escalation(
+            context=AsyncMock(),
+            user_id="user123",
+            caller_name="John Doe",
+            what_happened="Payment issue",
+            checked_tried="Checked order history",
+            urgency="high",
+            language_preference="English",
+            follow_up_method="call back"
+        )
+        
+        assert "Successfully created escalation" in result
+        assert "Reference ID:" in result
+        mock_post.assert_called_once()
+        
+        # Verify the payload structure in the mock call
+        call_args = mock_post.call_args
+        payload = call_args.kwargs["json"]
+        assert "embeds" in payload
+        assert "🚨 Human Escalation" in payload["embeds"][0]["title"]
+
