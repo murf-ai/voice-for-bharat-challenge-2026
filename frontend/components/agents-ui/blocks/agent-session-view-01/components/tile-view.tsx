@@ -76,17 +76,17 @@ export function TileLayout({
     <div className="absolute inset-x-0 top-8 bottom-32 z-50 md:top-12 md:bottom-40">
       <div className="relative mx-auto h-full max-w-2xl px-4 md:px-0">
         <div className="flex h-full flex-col gap-3">
-          <div className="flex justify-center px-2 md:px-0">
-            <AgentStatusCard
-              state={agentState}
-              onStartNewConversation={onStartNewConversation}
-              className="w-fit"
-            />
-          </div>
-
           <div className="flex-1 overflow-hidden rounded-[36px] border border-border bg-background/80 shadow-[0_30px_80px_rgba(15,23,42,0.14)]">
-            <div className="h-full w-full overflow-hidden bg-slate-950/5 dark:bg-white/5">
-              <div className="flex h-full w-full items-center justify-center px-6">
+            <div className="relative h-full w-full overflow-hidden bg-slate-950/5 dark:bg-white/5">
+              {/* Status Indicator inside the card */}
+              <div className="absolute top-8 left-0 right-0 z-10 flex justify-center">
+                <AgentStatusCard
+                  state={agentState}
+                  onStartNewConversation={onStartNewConversation}
+                  className="w-fit"
+                />
+              </div>
+              <div className="flex h-full w-full items-center justify-center px-6 pt-16">
                 <AnimatePresence mode="wait">
                   {!isAvatar ? (
                     <motion.div

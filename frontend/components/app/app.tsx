@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { TokenSource } from 'livekit-client';
 import { useSession } from '@livekit/components-react';
 import { WarningIcon } from '@phosphor-icons/react/dist/ssr';
@@ -10,6 +10,8 @@ import type { AppConfig } from '@/app-config';
 import { AgentSessionProvider } from '@/components/agents-ui/agent-session-provider';
 import { StartAudioButton } from '@/components/agents-ui/start-audio-button';
 import { ViewController } from '@/components/app/view-controller';
+import { CallAnalytics } from '@/components/CallAnalytics';
+import { TabSwitcher } from '@/components/app/tab-switcher';
 import { Toaster } from '@/components/ui/sonner';
 
 import { useAgentErrors } from '@/hooks/useAgentErrors';
@@ -32,6 +34,8 @@ interface AppProps {
 }
 
 export function App({ appConfig }: AppProps) {
+  const [activeTab, setActiveTab] = useState<'voice' | 'analytics'>('voice');
+
   const tokenSource = useMemo(() => {
     return typeof process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT === 'string'
       ? getSandboxTokenSource(appConfig)
@@ -59,7 +63,31 @@ export function App({ appConfig }: AppProps) {
     <AgentSessionProvider session={session}>
       <AppSetup />
 
-      <main className="grid h-svh grid-cols-1 place-content-center">
+      {/* Navbar */}
+      <header className="fixed top-0 left-0 z-50 w-full flex items-center justify-between p-6 bg-background">
+        <span className="text-foreground font-mono text-xl font-bold tracking-wider">
+            VyapaarMitra
+        </span>
+
+        {/* Centered Tab Switcher Container */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+            <TabSwitcher activeTab={activeTab} setActiveTab={setActiveTab} />
+        </div>
+
+        <span className="text-foreground font-mono text-xs font-bold tracking-wider uppercase hidden md:block">
+            Built with{' '}
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.livekit.io/agents"
+                className="underline underline-offset-4"
+            >
+                LiveKit Agents
+            </a>
+        </span>
+      </header>
+
+      <main className="grid h-svh grid-cols-1 place-content-center pt-20">
         {isDenied && (
           <div className="mx-auto mb-4 max-w-lg rounded-lg border border-red-300 bg-red-50 p-4 text-center text-red-700">
             <h3 className="font-semibold">
@@ -74,7 +102,8 @@ export function App({ appConfig }: AppProps) {
           </div>
         )}
 
-        <ViewController appConfig={appConfig} />
+        {activeTab === 'voice' && <ViewController appConfig={appConfig} />}
+        {activeTab === 'analytics' && <CallAnalytics />}
       </main>
 
       <StartAudioButton label="Start Audio" />
@@ -95,4 +124,5 @@ export function App({ appConfig }: AppProps) {
       />
     </AgentSessionProvider>
   );
+
 }

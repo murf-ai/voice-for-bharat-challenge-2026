@@ -4,6 +4,7 @@ import os
 import secrets
 import string
 import requests
+from datetime import datetime
 
 from dotenv import load_dotenv
 from livekit import rtc
@@ -185,6 +186,7 @@ class Assistant(Agent):
             instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}"
         super().__init__(instructions=instructions)
         self.order_details = order_details
+        self.call_outcome_success = False
 
     @function_tool
     async def lookup_caller(self, context: RunContext, user_id: str):
@@ -213,6 +215,47 @@ class Assistant(Agent):
         facts_dict = json.loads(facts)
         db.save_caller_info(user_id, name, language_preference, facts_dict)
         return "Caller information saved successfully."
+
+    @function_tool
+    async def save_order(self, context: RunContext, user_id: str, item: str, quantity: str, price: str):
+        """Use this tool to save a user's order in the caller's facts.
+
+        Args:
+            user_id: The unique identifier for the caller.
+            item: The name of the product being ordered.
+            quantity: The quantity of the product.
+            price: The price of the product.
+        """
+        logger.info(f"Saving order in facts for user {user_id}: {item} x {quantity}")
+        try:
+            # 1. Lookup caller
+            record = db.lookup_caller(user_id)
+            if not record:
+                # If no record, start with empty facts and default name/language
+                name = "Unknown"
+                language_preference = "English"
+                facts = {}
+            else:
+                name = record['name']
+                language_preference = record['language_preference']
+                facts = record['facts']
+
+            # 2. Merge order info
+            if "orders" not in facts:
+                facts["orders"] = []
+            facts["orders"].append({
+                "item": item,
+                "quantity": quantity,
+                "price": price,
+                "timestamp": datetime.now().isoformat()
+            })
+
+            # 3. Save caller info
+            db.save_caller_info(user_id, name, language_preference, facts)
+            return "Order saved to facts successfully."
+        except Exception as e:
+            logger.error(f"Error saving order to facts: {e}")
+            return f"Failed to save order to facts: {e}"
 
     @function_tool
     async def search_products(self, context: RunContext, query: str) -> str:
@@ -250,6 +293,7 @@ class Assistant(Agent):
             top_products = products[:3]
             parsed_products = []
             for p in top_products:
+                self.call_outcome_success = True
                 price_usd = p.get("price", 0)
                 price_inr = round(price_usd * 85)
                 parsed_products.append({
@@ -349,6 +393,7 @@ class Assistant(Agent):
             def _send():
                 response = requests.post(webhook_url, json=payload, timeout=5)
                 response.raise_for_status()
+                self.call_outcome_success = True
                 return response
 
             await loop.run_in_executor(None, _send)
@@ -441,9 +486,24 @@ async def my_agent(ctx: JobContext):
 
     caller_record = db.lookup_caller(user_id="default_user")
 
+    # Determine channel
+    channel = "sip" if any(p.kind == rtc.ParticipantKind.PARTICIPANT_KIND_SIP for p in ctx.room.remote_participants.values()) else "browser"
+    db.create_call_record(call_sid=ctx.room.name, channel=channel)
+
+    assistant = Assistant(order_details=order_details, caller_record=caller_record)
+
+    async def on_shutdown():
+        db.update_call_outcome(
+            call_sid=ctx.room.name,
+            outcome="success" if assistant.call_outcome_success else "failed",
+            failure_reason=None if assistant.call_outcome_success else "no_success_condition_met",
+        )
+
+    ctx.add_shutdown_callback(on_shutdown)
+
     # Start the session, which initializes the voice pipeline and warms up the models
     await session.start(
-        agent=Assistant(order_details=order_details, caller_record=caller_record),
+        agent=assistant,
         room=ctx.room,
         room_options=room_io.RoomOptions(
             audio_input=room_io.AudioInputOptions(
