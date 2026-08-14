@@ -129,13 +129,15 @@ If no record was found, proceed as a new caller.
 4. If the user says NO to saving, DO NOT call `save_caller_info`.
 
 HUMAN ESCALATION RULES:
-1. ONLY call `create_escalation` in the following two situations:
-   - The caller has a payment, refund, or order dispute that you cannot resolve yourself.
-   - The caller asks something genuinely outside your knowledge or capability (an out-of-scope question you cannot answer confidently).
-2. A normal conversation (e.g., asking about stock, searching products, placing a normal order) must NEVER trigger `create_escalation`.
-3. Before calling `create_escalation`, you MUST ask the caller for permission out loud: tell them what information will be shared (a short summary of the issue, not the full conversation) and ask if that is okay.
-   - If they say YES/agree: Call the `create_escalation` tool.
-   - If they say NO/refuse: DO NOT call the tool. Continue helping them within your normal capabilities.
+1. If the caller wants a return, refund, exchange, or has an order dispute, ALWAYS call
+   `escalate_to_returns_specialist` first — do NOT call `create_escalation` for these cases.
+   The Returns and Refunds Specialist handles them directly.
+2. ONLY call `create_escalation` when:
+   - The Returns Specialist has already been involved and still couldn't resolve it, OR
+   - The caller asks something genuinely outside your knowledge or capability that has
+     nothing to do with returns/refunds/orders.
+3. A normal conversation (stock, product search, general order placement) must NEVER
+   trigger either tool.
 4. The escalation summary must only include:
    - Who needs help (name/user_id if known from memory)
    - What happened (short description)
@@ -172,21 +174,80 @@ Start every new conversation by saying:
 """
 
 
+
+class ReturnsRefundsSpecialist(Agent):
+    def __init__(self, chat_ctx, room=None) -> None:
+        instructions = (
+            "You are a Returns and Refunds Specialist for VyapaarMitra. "
+            "You are exclusively responsible for assisting customers with returns, "
+            "refunds, exchanges, and order disputes. "
+            "Be polite, professional, and efficient. "
+            "If you cannot resolve an issue, guide them to human support via the main agent."
+        )
+        tts = murf.TTS(
+            voice="Samar",
+            style="Conversation",
+            tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
+            text_pacing=True
+        )
+        super().__init__(instructions=instructions, chat_ctx=chat_ctx, tts=tts)
+        self.room = room
+
+    async def on_enter(self) -> None:
+        await self.session.generate_reply(
+            instructions="Introduce yourself as the Returns and Refunds Specialist. Ask how you can help with their order, return, or refund."
+        )
+
+    @function_tool
+    async def return_to_main_agent(self, context: RunContext):
+        """Transfer the conversation back to the main Assistant agent."""
+        await context.session.say("I'll pass you back to our main assistant now. They can help you with other questions.")
+
+        await self.room.local_participant.publish_data(
+            json.dumps({"type": "agent_switch", "agent": "main", "label": "Main Agent"}).encode("utf-8")
+        )
+
+        return Assistant(chat_ctx=self.chat_ctx, room=self.room)
+
+
 class Assistant(Agent):
-    def __init__(self, order_details: str = None, caller_record: dict = None) -> None:
-        if caller_record:
+    def __init__(self, order_details: str = None, caller_record: dict = None, chat_ctx: "llm.ChatContext" = None, room=None) -> None:
+        if chat_ctx:
+            # We are taking over an existing context
+            instructions = SYSTEM_PROMPT
+        elif caller_record:
             caller_context = f"The caller has a saved record: {json.dumps(caller_record)}. Greet them by name using relevant facts, and Do NOT call lookup_caller again for this caller -- you already have their info."
+            instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}"
         else:
             caller_context = "No record found for this caller. Treat them as a new caller. Do NOT call lookup_caller -- there is nothing to look up."
-
-        if order_details:
-            outbound_greeting = f"This is VyapaarMitra, your local shop's voice assistant. I am calling to confirm your recent order: {order_details}. If this isn't a good time, just say so and I'll call back later."
-            instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}\n\nCRITICAL: You are currently on an outbound call. Your FIRST response MUST be exactly: '{outbound_greeting}'"
-        else:
             instructions = f"{SYSTEM_PROMPT}\n\n{caller_context}"
-        super().__init__(instructions=instructions)
+
+        if order_details and not chat_ctx:
+            outbound_greeting = f"This is VyapaarMitra, your local shop's voice assistant. I am calling to confirm your recent order: {order_details}. If this isn't a good time, just say so and I'll call back later."
+            instructions = f"{instructions}\n\nCRITICAL: You are currently on an outbound call. Your FIRST response MUST be exactly: '{outbound_greeting}'"
+            
+        super().__init__(instructions=instructions, chat_ctx=chat_ctx)
         self.order_details = order_details
         self.call_outcome_success = False
+        self.room = room
+
+    @function_tool
+    async def escalate_to_returns_specialist(self, context: RunContext):
+        """Transfer the conversation to the Returns and Refunds Specialist.
+    Call this IMMEDIATELY whenever the caller mentions a return, refund, exchange,
+    damaged/wrong item, or wants to dispute an order — before considering create_escalation."""
+        try:
+            await context.session.say("I understand. I'm connecting you to our returns and refunds specialist who can better assist you with this.")
+
+            await self.room.local_participant.publish_data(
+                json.dumps({"type": "agent_switch", "agent": "returns_specialist", "label": "Returns Specialist"}).encode("utf-8")
+            )
+
+            return ReturnsRefundsSpecialist(chat_ctx=self.chat_ctx, room=self.room)
+        except Exception as e:
+            logger.error(f"FAILED to switch to returns specialist: {e}", exc_info=True)
+            raise
+
 
     @function_tool
     async def lookup_caller(self, context: RunContext, user_id: str):
@@ -490,20 +551,21 @@ async def my_agent(ctx: JobContext):
     channel = "sip" if any(p.kind == rtc.ParticipantKind.PARTICIPANT_KIND_SIP for p in ctx.room.remote_participants.values()) else "browser"
     db.create_call_record(call_sid=ctx.room.name, channel=channel)
 
-    assistant = Assistant(order_details=order_details, caller_record=caller_record)
+    # Instantiate the agent to track outcome, but pass the class to session.start
+    assistant_instance = Assistant(order_details=order_details, caller_record=caller_record, room=ctx.room)
 
     async def on_shutdown():
         db.update_call_outcome(
             call_sid=ctx.room.name,
-            outcome="success" if assistant.call_outcome_success else "failed",
-            failure_reason=None if assistant.call_outcome_success else "no_success_condition_met",
+            outcome="success" if assistant_instance.call_outcome_success else "failed",
+            failure_reason=None if assistant_instance.call_outcome_success else "no_success_condition_met",
         )
 
     ctx.add_shutdown_callback(on_shutdown)
 
     # Start the session, which initializes the voice pipeline and warms up the models
     await session.start(
-        agent=assistant,
+        agent=assistant_instance,
         room=ctx.room,
         room_options=room_io.RoomOptions(
             audio_input=room_io.AudioInputOptions(
@@ -516,6 +578,7 @@ async def my_agent(ctx: JobContext):
             ),
         ),
     )
+
 
     if order_details:
         # Outbound calls: the agent must speak first

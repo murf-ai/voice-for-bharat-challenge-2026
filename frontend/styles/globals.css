@@ -114,6 +114,17 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+[data-agent-theme='returns_specialist'] {
+  --primary: oklch(0.65 0.18 75);
+  --accent: oklch(0.7 0.15 75);
+  --ring: oklch(0.65 0.18 75);
+  --agent-accent: #d97706;
+}
+
+:root {
+  --agent-accent: #16a34a;
+}
+
 @layer base {
   * {
     @apply border-foreground/20 outline-ring/50;

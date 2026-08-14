@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Mic } from 'lucide-react';
+import { Mic, ShoppingBag, Globe, ArrowRight, BarChart3 } from 'lucide-react';
 
 function WelcomeImage() {
   return (
@@ -8,6 +8,16 @@ function WelcomeImage() {
     </div>
   );
 }
+
+const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
+  <div className="bg-white/70 backdrop-blur-sm border border-green-100 p-6 rounded-xl shadow-sm hover:border-green-300 transition-all">
+    <div className="mb-4 text-green-600">
+      <Icon size={32} strokeWidth={1.5} />
+    </div>
+    <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+    <p className="text-sm text-gray-600">{description}</p>
+  </div>
+);
 
 interface WelcomeViewProps {
   startButtonText: string;
@@ -22,9 +32,15 @@ export const WelcomeView = ({
   return (
     <div
       ref={ref}
-      className="bg-white min-h-screen flex flex-col items-center justify-center px-4 py-8"
+      className="relative min-h-screen bg-gray-50 flex flex-col items-center px-4 pt-12 pb-20"
     >
-      <section className="flex flex-col items-center justify-center text-center max-w-2xl w-full">
+      {/* Background Decor */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-green-200/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl" />
+      </div>
+
+      <section className="flex flex-col items-center justify-center text-center max-w-2xl w-full z-10 mb-10">
         {/* Logo Icon */}
         <WelcomeImage />
 
@@ -39,12 +55,12 @@ export const WelcomeView = ({
         </p>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-gray-600 max-w-md mb-8">
+        <p className="text-base md:text-lg text-gray-600 max-w-md mb-6">
           Discover local products, compare options, and connect with nearby businesses using simple voice conversations.
         </p>
 
         {/* Ready State Message */}
-        <div className="mb-8 p-4 bg-green-50 border border-green-200 rounded-lg w-full">
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg w-full">
           <p className="text-green-800 font-medium">
             Ready to start your voice shopping experience.
           </p>
@@ -60,10 +76,20 @@ export const WelcomeView = ({
         </Button>
 
         {/* Language Support Footer */}
-        <div className="mt-12 pt-8 border-t border-gray-200 w-full">
+        <div className="mt-8 pt-4 border-t border-gray-200 w-full">
           <p className="text-sm text-gray-500">
             🌐 Supports: English • Telugu • Hindi
           </p>
+        </div>
+      </section>
+
+      {/* Feature Cards */}
+      <section className="max-w-5xl w-full z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <FeatureCard icon={ShoppingBag} title="Local Products" description="Discover nearby products and businesses using natural voice conversations." />
+          <FeatureCard icon={Globe} title="Multilingual Support" description="Talk naturally in English, Telugu and Hindi for a seamless shopping experience." />
+          <FeatureCard icon={ArrowRight} title="Smart Specialist Handoffs" description="Automatically connects customers to the right specialist whenever additional help is needed." />
+          <FeatureCard icon={BarChart3} title="Live Call Analytics" description="Track conversations, customer interactions and agent performance in real time." />
         </div>
       </section>
     </div>
