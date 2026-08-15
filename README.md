@@ -1,9 +1,30 @@
- HEAD
-# Voice Agent Starter — Powered by Murf Falcon
+# VyapaarMitra — Voice Agent for Local Commerce
 
-Build a production voice AI agent in 5 minutes. Powered by the fastest TTS on the market - swap the system prompt to build anything from customer support to language tutors.
+**VyapaarMitra** is an interactive, multilingual voice agent built for the Local Commerce track of Murf AI's "10 Days of AI Voice Agents" challenge. It enables customers to directly call a local shop and talk to an AI agent to search catalogues, check prices/stock, and place/confirm orders in real-time, completely replacing the need to browse complex WhatsApp catalogues or navigate tedious websites.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Murf Falcon](https://img.shields.io/badge/TTS-Murf%20Falcon-6366F1)](https://murf.ai/api/docs/text-to-speech/streaming) [![LiveKit](https://img.shields.io/badge/Transport-LiveKit-002cf2)](https://docs.livekit.io) [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+
+---
+
+## What It Does
+
+- 🗣️ **Multilingual & Code-Mixed Conversations:** Talks fluently to callers in Telugu, Hindi, English, and natural code-mixed vernacular (like Hinglish or Telglish).
+- 📦 **Live Catalogue Search:** Accesses a live local store database to instantly check item prices, stock availability, and buyer ratings.
+- 🧠 **Smart Caller Memory:** Remembers returning callers and greets them warmly by name, strictly adhering to the user's explicit consent before storing any data.
+- 🚨 **Instant Human Escalation:** Automatically alerts human shop owners via a formatted Discord webhook notification for order confirmations, returns, or complex out-of-scope inquiries.
+- 📞 **Outbound Order Confirmations:** Proactively places outbound telephone calls to buyers to verbally verify order placement and details.
+- 🔄 **Returns & Refunds Specialist:** Seamlessly hands off return/refund queries to a dedicated specialist agent, which activates a distinct voice and updates the frontend UI styling to match.
+
+---
+
+## Tech Stack
+
+- **STT (Speech-to-Text):** [Deepgram](https://deepgram.com) (using the advanced `nova-3` multilingual model)
+- **LLM (Large Language Model):** [Gemini](https://aistudio.google.com/) (for low-latency, highly intelligent context processing)
+- **TTS (Text-to-Speech):** [Murf Falcon](https://murf.ai/falcon) — the fastest production TTS API. Features **Anisha** (Indian English, Female) for the main store assistant, and **Samar** (Indian English, Male) for the Returns & Refunds specialist.
+- **Real-time Transport:** [LiveKit](https://livekit.io/) (including full LiveKit SIP/telephony support for answering standard phone calls)
+- **Frontend:** [Next.js](https://nextjs.org/) (React, TypeScript, TailwindCSS, custom audio visualizers, and state-driven UI themes)
+- **Storage:** [SQLite](https://sqlite.org/) (for managing local session records, caller memory, and the inventory catalogue)
 
 ---
 
@@ -65,16 +86,33 @@ cd murf-livekit-starter
 
 ### Step 2: Set up environment variables
 
-Create `.env.local` in both `backend/` and `frontend/` (copy from `.env.example` in each). You need:
+To run the application, you must set up environment variables for both the backend and frontend.
 
-| Variable                               | Where to get it                                        | Required |
-| -------------------------------------- | ------------------------------------------------------ | -------- |
-| `LIVEKIT_URL`                          | LiveKit Cloud dashboard                                | Yes      |
-| `LIVEKIT_API_KEY`                      | LiveKit Cloud dashboard                                | Yes      |
-| `LIVEKIT_API_SECRET`                   | LiveKit Cloud dashboard                                | Yes      |
-| `MURF_API_KEY`                         | [murf.ai/api/dashboard](https://murf.ai/api/dashboard) | Yes      |
-| `DEEPGRAM_API_KEY`                     | [deepgram.com](https://deepgram.com)                   | Yes      |
-| `GOOGLE_API_KEY` (or `OPENAI_API_KEY`) | Depends on LLM choice                                  | Yes      |
+1. Create a `.env.local` file inside the `backend/` directory.
+2. Create a `.env.local` file inside the `frontend/` directory.
+
+**Crucial Security Warning:** These `.env.local` files are configured in `.gitignore` and **must never be committed** to source control. Never place real, active API keys in your `README.md` or template files.
+
+#### Backend Environment Variables (`backend/.env.local`)
+
+| Variable | Source / Description | Required |
+|---|---|---|
+| `LIVEKIT_URL` | LiveKit Cloud dashboard (your project settings) | Yes |
+| `LIVEKIT_API_KEY` | LiveKit Cloud dashboard (your project settings) | Yes |
+| `LIVEKIT_API_SECRET` | LiveKit Cloud dashboard (your project settings) | Yes |
+| `MURF_API_KEY` | [Murf API Dashboard](https://murf.ai/api/dashboard) | Yes |
+| `DEEPGRAM_API_KEY` | [Deepgram Console](https://deepgram.com) | Yes |
+| `GOOGLE_API_KEY` | [Google AI Studio](https://aistudio.google.com/) (for Gemini model) | Yes |
+| `DISCORD_WEBHOOK_URL` | Discord Channel settings → Integrations → Webhooks (for human escalations) | Yes |
+
+#### Frontend Environment Variables (`frontend/.env.local`)
+
+| Variable | Source / Description | Required |
+|---|---|---|
+| `LIVEKIT_URL` | LiveKit Cloud URL | Yes |
+| `LIVEKIT_API_KEY` | LiveKit API Key | Yes |
+| `LIVEKIT_API_SECRET` | LiveKit API Secret | Yes |
+| `AGENT_NAME` | Set to `my-agent` or leave blank for automatic dispatch | Optional |
 
 ### Step 3: Install backend dependencies
 
@@ -91,7 +129,7 @@ cd frontend
 pnpm install
 ```
 
-### Step 5: Run it
+### Step 5: Run the application
 
 **Option A - All-in-one (from repo root):**
 
@@ -107,7 +145,7 @@ chmod +x start_app.sh
 **Option B - Separate terminals:**
 
 ```bash
-# Terminal 1 — LiveKit Server
+# Terminal 1 — LiveKit Server (if running locally)
 livekit-server --dev
 
 # Terminal 2 — Backend agent
@@ -119,7 +157,26 @@ cd frontend && pnpm dev
 
 Then open **http://localhost:3000** in your browser.
 
-You should now see the voice agent UI. Click **Start talking**, allow microphone access, and speak — the agent will respond with Murf Falcon TTS. Ensure your backend and (if using Option B) LiveKit server are running.
+---
+
+## Testing a Conversation
+
+### Testing via the Web Browser
+
+1. Open **http://localhost:3000** in your web browser.
+2. Ensure both your backend agent and frontend application are running.
+3. Click the **Start talking** button in the UI.
+4. Allow microphone access when prompted.
+5. Speak to the agent (e.g., "Hello, do you have fresh mangoes in stock?"). The agent will reply in real-time, and you'll see live transcriptions, custom visualizers, and state indicators on-screen.
+
+### Testing via a Telephone Call (SIP / VoIP)
+
+To test the agent over an actual phone call using SIP:
+1. Configure a SIP trunk/inbound number in your LiveKit Cloud account under the **Telephony (SIP)** tab.
+2. Ensure your backend python agent is running (`uv run python src/agent.py dev`).
+3. Use a softphone client like **Linphone** (or another SIP-compatible dialer/actual phone) to place a VoIP call to your LiveKit SIP URI or telephone number.
+4. The backend agent will receive the inbound call, detect the SIP participant channel, automatically activate standard telephony-optimized noise cancellation, and greet you verbally.
+5. Talk to the agent just like a standard phone call.
 
 ---
 
@@ -137,7 +194,8 @@ Set these environment variables in Railway:
 
 - `MURF_API_KEY`
 - `DEEPGRAM_API_KEY`
-- `GOOGLE_API_KEY` or `OPENAI_API_KEY`
+- `GOOGLE_API_KEY`
+- `DISCORD_WEBHOOK_URL`
 - `LIVEKIT_URL`
 - `LIVEKIT_API_KEY`
 - `LIVEKIT_API_SECRET`
@@ -274,9 +332,22 @@ For deeper documentation on each part, see:
 
 ---
 
+## About This Project
+
+**VyapaarMitra** was built as part of the **10 Days of Voice Agents — #VoiceForBharat Edition** challenge.
+
+[Read the full story](BLOG_LINK_HERE) on how we designed, developed, and deployed this voice agent.
+
+Special thanks to **[Murf Falcon](https://murf.ai/falcon)** for providing the ultra-low-latency, high-fidelity streaming Text-to-Speech API that powers our voices (**Anisha** and **Samar**), making conversational voice interfaces accessible and human-like for local commerce.
+
+---
+
 ## License
 
 MIT
+
+---
+
 # 10 Days of Voice Agents — #VoiceForBharat Edition
 
 Welcome to **10 Days of Voice Agents, #VoiceForBharat Edition**, by [murf.ai](https://murf.ai/api)!
@@ -360,13 +431,8 @@ Your repo should tell the story by Day 10: a clear README, an honest known-limit
 - [LiveKit Agent Examples](https://github.com/livekit-examples/python-agents-examples)
 - [Testing Voice Agents](https://docs.livekit.io/agents/start/testing/)
 
-## License
-
-Based on MIT-licensed templates from LiveKit, with Murf Falcon integration. See the LICENSE files for details.
-
 ---
 
 **Ten days. One agent. Build something someone can actually use, and have fun while doing it!**
 
 Built for #VoiceForBharat by [murf.ai](https://murf.ai/api)
->>>>>>> 2ac7f42efb4ce9c824e63d0051edabef114054ce
